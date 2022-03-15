@@ -22,6 +22,12 @@
         if(isset($_POST["adresse"]) && (!empty($_POST["adresse"]))){
             $adresse = htmlspecialchars($_POST["adresse"]);
         }
+        if(isset($_POST["cp"]) && (!empty($_POST["cp"]))){
+            $cp = htmlspecialchars($_POST["cp"]);
+        }
+        if(isset($_POST["ville"]) && (!empty($_POST["ville"]))){
+            $ville = htmlspecialchars($_POST["ville"]);
+        }
     }else{
         
     }
@@ -37,10 +43,10 @@
     } else if ($password != $passwords) {
         header('Location: ../inscription.php?mdperror');
     } else {
-        $sqlRequest = "INSERT INTO `users` (`nom`, `prenom`, `mail`, `password`, `phone`, `adresse`, `id_role`) 
-                        VALUES (?,?,?,?,?,?,'1');";
+        $sqlRequest = "INSERT INTO `users` (`nom`, `prenom`, `mail`, `password`, `phone`, `adresse`, `code_postal`, `ville`, `id_role`) 
+                        VALUES (?,?,?,?,?,?,?,?,'1');";
         $pdoStat = $dbh -> prepare($sqlRequest);
-        $pdoStat->execute(array($name,$firstname,$mail,$password,$phone,$adresse));
+        $pdoStat->execute(array($name,$firstname,$mail,$password,$phone,$adresse,$cp,$ville));
         $row = $pdoStat->fetchall(PDO::FETCH_ASSOC);
         header('Location: ../connexion.php?sucess');
     }

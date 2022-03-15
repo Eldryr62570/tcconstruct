@@ -77,7 +77,7 @@
             <input type="text" name="firstname" id="firstname" required>
 
             <label for="mail">Email :</label>
-            <input type="email" name="mail" id="mail" required>
+            <input type="email" name="mail" id="mail" placeholder="exemple@exemple.fr" required>
 
             <label for="password">Mot de passe :</label>
             <input type="password" name="password" id="password" required>
@@ -86,10 +86,16 @@
             <input type="password" name="passwordc" id="passwordc" required>
 
             <label for="phone">Numéros de téléphone :</label>
-            <input type="text" name="phone" id="phone" required>
+            <input type="tel" name="phone" id="phone" placeholder="Format : 06 06 06 06 06" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}" required>
 
             <label for="adresse">Adresse :</label>
-            <textarea type="text" name="adresse" id="adresse" required></textarea>
+            <input type="text" name="adresse" id="adresse" placeholder="N° de rue + Nom de rue" required>
+
+            <label for="cp">Code Postal :</label>
+            <input type="text" name="cp" id="cp" required>
+
+            <label for="ville">Ville :</label>
+            <input type="text" name="ville" id="ville" required>
 
             <input type="submit" name="inscription" value="Inscription" class="boutton-inscription" />
 
