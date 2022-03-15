@@ -1,0 +1,87 @@
+body{
+    font-family:"Raleway", sans-serif; ;
+}
+.formulaire-inscription {
+    display: flex;
+width: 40%;
+padding: 10px 20px;
+margin: 100px auto;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+z-index: 1;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+background-color: #fff;
+}
+
+.formulaire-inscription::before{
+    content: "";
+    display: block;
+    position: absolute;
+    background-image: url(../img/pattern.svg);
+    height: 160px;
+    width: 150px;
+    top: 70%;
+    left: 25%;
+    z-index: -1;
+    background-repeat: no-repeat;
+}
+
+
+
+
+.formulaire-inscription input{
+    width: 100%;
+    font-family: "Raleway", sans-serif;
+    margin-top: 5px;
+    margin-bottom: 23px;
+    height: 30px;
+
+}
+
+.formulaire-inscription textarea{
+    width: 100%;
+    font-family: "Raleway", sans-serif;
+    margin-top: 5px;
+    margin-bottom: 23px;
+    height: 60px;
+
+}
+
+.formulaire-inscription input.boutton-inscription{
+background-color: white;
+border: 1px solid #f0542c;
+font-family: "Raleway", sans-serif;
+color: #f0542c;
+cursor: pointer;
+transition: 0.4s;
+height: 45px;
+font-size: 16px;
+}
+.formulaire-inscription input.boutton-inscription:hover{
+    background-color: #f0542c;
+    color: white;
+    transition: 0.3s;
+
+    }
+
+.inscription-bg{
+    margin-bottom: 30px;
+}
+
+.redirect {
+    display: flex;
+    justify-content: center;
+}
+
+.redirect a {
+    text-decoration: underline;
+}
+
+.redirect a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+}

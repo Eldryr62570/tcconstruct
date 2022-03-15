@@ -82,6 +82,7 @@
                                         </li>
                                         <li><a href="https://www.actualite.tc-construction.fr/">Nos Actualités </a></li>
                                         <li><a href="contact.php">Contact</a></li>
+                                        <li class="ins"><a href="inscription.php">Inscription</a></li>
                                     </ul>
                                 </nav>
                             </div>
