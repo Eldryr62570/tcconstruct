@@ -103,6 +103,11 @@ li {
   list-style: none;
 }
 
+.ins {
+  float: right;
+}
+
+
 /* line 60, ../../Arafath/CL/Cl November/226. Construction/HTML/scss/theme-default.scss */
 p {
   font-size: 16px;

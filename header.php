@@ -80,8 +80,11 @@
                                                 <li><a href="project-renov.php">Rénovation</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="testviewarticle.php">Nos Actualités </a></li>
+
+                                        <li><a href="actualite.php">Nos Actualités </a></li>
+
                                         <li><a href="contact.php">Contact</a></li>
+                                        <li class="ins"><a href="inscription.php">Inscription</a></li>
                                     </ul>
                                 </nav>
                             </div>
