@@ -85,3 +85,13 @@ font-size: 16px;
 .error {
     color: red;
 }
+
+@media screen and (max-width: 991px) {
+    .formulaire-inscription {
+        width: 60%;
+    }
+    .formulaire-inscription::before{
+        top: 50%;
+        left: 10%;
+    }
+}
