@@ -10,14 +10,13 @@
 
 
     $sqlRequest = "SELECT * FROM article INNER JOIN categorie ON article.id_categorie = categorie.id_categorie";
-    $pdoStat = $dbh -> prepare($sqlRequest);
-    $pdoStat->execute();
-    $articles = $pdoStat->fetchAll(PDO::FETCH_ASSOC);
-
+    $article = $dbh -> prepare($sqlRequest);
+    $article->execute();
+    
     $sqlRequest = "SELECT id_article, nom_categorie FROM categorie c,article a WHERE a.id_categorie = c.id_categorie";
-    $pdoStat = $dbh -> prepare($sqlRequest);
-    $pdoStat->execute();
-    $categories = $pdoStat->fetchAll(PDO::FETCH_ASSOC);
+    $categories = $dbh -> prepare($sqlRequest);
+    $categories->execute();
+    
     
 
     $i = 1;

@@ -41,35 +41,36 @@
     <!-- Actualite affichage -->
     <div class="container-fluid  height_actu">        
         <div class="row justify-content-center mx-0">
-            <?php foreach ($articles as $article){ ?>
+            <?php 
+            
+            while ($article2 = $article->fetch()){
+                   
+                ?>
             <div class="col-md-5 px-5 mt-5 flex-row d-flex justify-content-center">
                 <!-- Cards actu -->
                 <div class="card">
                     <div class="card-body">
-                        <img src="<?php echo $article["imgp_article"]?>" class="img-fluid rounded" alt="Image title">
-                        <h5 class="card-title"><?php echo $article["titre_article"]?></h5>
+                        <img src="<?php echo $article2["imgp_article"]?>" class="img-fluid rounded" alt="Image title">
+                        <h5 class="card-title"><?php echo $article2["titre_article"]?></h5>
                         <ul class="post-meta list-inline pb-2">
                             <li class="list-inline-item">
                                 <i class="fa fa-user-circle-o"></i> <a href="#">Tc construct</a>
                             </li>
                             <li class="list-inline-item">
-                                <i class="fa fa-calendar-o"></i> <a href="#"><?php echo $article["date_article"]?></a>
+                                <i class="fa fa-calendar-o"></i> <a href="#"><?php echo $article2["date_article"]?></a>
                             </li>
                         </ul>
-                        <p class="card-text"><?php echo $article["contenu_article"]?></p>
-                        <i class="fa fa-folder"></i><a href="#"> 
-                            <?php foreach($categories as $categorie){
-                                    if($categorie["id_article"] == $article["id_article"]){
-                            ?>
-                            <?php echo $categorie["nom_categorie"]?>
-
-                            <?php } 
-                            }?>
+                        <p class="card-text"><?php echo $article2["contenu_article"]?></p>
+                        <i class="fa fa-folder pt-2"></i>                          
+                                       <?php                                        
+                                        $categorie = $categories->fetch();
+                                        echo "<a href ='#'>".$categorie["nom_categorie"]."</a>";
+                                       ?>     
                         <ul class="post-meta list-inline pt-3">                    
                             <li class="list-inline-item">    
                             <i class="fa fa-tags"></i>
                             <?php foreach($tagJoin as $tag){
-                                    if($tag["id_article"] == $article["id_article"]){
+                                    if($tag["id_article"] == $article2["id_article"]){
                                 ?>                            
                                  <a href="#"><?php echo $tag["nom_tag"]." &nbsp "?></a>                            
                             <?php }
