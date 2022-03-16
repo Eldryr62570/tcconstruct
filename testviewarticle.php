@@ -1,5 +1,5 @@
 <?php 
-require_once 'app/db/connDb.php'; 
+require_once 'db/connDb.php'; 
 
 $sqlarticles = ("SELECT * FROM article WHERE id_article ");
 $requetearticles = $pdo->query($sqlarticles);

@@ -8,7 +8,7 @@ body{
 
 .vtimeline-block {
     margin-bottom: 20%;
-    background-color: #e6e6e6;
+    background-color: #f3ededc5;
     padding: 40px 40px;
 }
 
@@ -26,6 +26,8 @@ body{
 
 .img-fluid {
     max-height: 600px;
+    border: 1px solid;
+    color: #252525;
 }
 
 .vtimeline-content h3 {
@@ -41,9 +43,9 @@ body{
 }
 
 .postname {
-    float: left !important;
-    padding: 0px 60px;
-    margin: 0px 20px;
+    padding: 0px 70px;
+    margin: 0px 30px;
+    margin-top: 5% !important;
 }
 
 .vtimeline-point {
@@ -118,7 +120,7 @@ body{
     color: #374054;
 }
 .post-meta {
-    margin-top: -25px;
+    margin-top: -90px;
     float: right;
 }
 
@@ -160,17 +162,18 @@ h3 {
     margin: 10px;
     border: 1px solid #ccc;
     margin-top: 1%;
-    width: 320px;
+    width: 490px;
     display: inline-block;
+    max-width: auto;
   }
 
-  div.gallerybig {
+ /*  div.gallerybig {
     margin: 10px;
     border: 1px solid #ccc;
     margin-top: 1%;
     width: 490px;
     display: inline-block;
-  }
+  } */
   
   div.gallery:hover {
     border: 1px solid #777;
@@ -178,7 +181,8 @@ h3 {
   
   div.gallery img {
     width: 100%;
-    height: auto;
+    min-height: 340px;
+    max-height: 700px;
   }
   
   div.desc {
@@ -192,21 +196,31 @@ h3 {
     transition: 0.5s;  
   }
 
-  .boutonarticle:hover {
-    text-align: center !important;
-    padding: 20px 10px;  
-    color: #e65e3dd0;
+  .boutonarticle a {
+    color: #e6e6e6;
   }
+
 
   .boutonarticle1 {
     float: left;
     padding: 60px 10px; 
+
   }
   .boutonarticle2 {
     float: right;
     padding: 60px 10px;
     
+    
 }
+
+ .boutonarticle1 a {
+    color: #e6e6e6;
+    
+  }
+  .boutonarticle2 a {
+    color: #e6e6e6;
+    
+  }
 
 
 

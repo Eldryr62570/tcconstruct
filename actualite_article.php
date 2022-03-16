@@ -40,7 +40,7 @@
         <![endif]-->
 
     <?php include("header.php"); ?>
-    <?php include("app/traitement/affiche_pagearticle.php"); ?>
+    <?php include("db/affiche_pagearticle.php"); ?>
 
     <div class="bradcam_area bradcam_bg_2 mb-50">
         <div class="container">
@@ -48,7 +48,9 @@
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
                         <h3>Nos Actualités</h3>
-                      <p><a href="index.php">Accueil</a> / <a href="index.php">Actualités</a> - Article <?php echo $rowarticle['id_article'];?></p>
+                        <?php foreach ($rowcatarticle as $rowcatarticl) {  ?>
+                        <p><a href="index.php">Accueil</a> / <a href="index.php">Actualités</a> / <a href="index.php"><?php /* var_dump($rowarticle); */ echo $rowcatarticl['nom_categorie'];?></a></p>
+                        <?php } ?>
                         <p><br><?php echo $rowarticle['titre_article'];?></p>
                     </div>
                 </div>
@@ -58,7 +60,7 @@
 
 
     <!-- articles -->
-    <?php include('includes/articles.php'); ?>
+    <?php include('articles.php'); ?>
 
     <!-- chose_us_area start -->
     <?php include('newchoose.php'); ?>
