@@ -1,3 +1,6 @@
+<?php
+    require("db/readArticle.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,43 +39,52 @@
         </div>
     </div>
     <!-- Actualite affichage -->
-    <div class="container-fluid  height_actu">
+    <div class="container-fluid  height_actu">        
         <div class="row justify-content-center mx-0">
+            <?php foreach ($articles as $article){ ?>
             <div class="col-md-5 px-5 mt-5 flex-row d-flex justify-content-center">
                 <!-- Cards actu -->
                 <div class="card">
                     <div class="card-body">
-                        <img src="https://picsum.photos/1000/500" class="img-fluid rounded" alt="Image title">
-                        <h5 class="card-title">Bâtiment de stockage de grain</h5>
+                        <img src="<?php echo $article["imgp_article"]?>" class="img-fluid rounded" alt="Image title">
+                        <h5 class="card-title"><?php echo $article["titre_article"]?></h5>
                         <ul class="post-meta list-inline pb-2">
                             <li class="list-inline-item">
-                                <i class="fa fa-user-circle-o"></i> <a href="#">John Doe</a>
+                                <i class="fa fa-user-circle-o"></i> <a href="#">Tc construct</a>
                             </li>
                             <li class="list-inline-item">
-                                <i class="fa fa-calendar-o"></i> <a href="#">25 June 2020</a>
+                                <i class="fa fa-calendar-o"></i> <a href="#"><?php echo $article["date_article"]?></a>
                             </li>
                         </ul>
-                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti qui
-                            cupiditate officiis, reprehenderit pariatur enim, necessitatibus sit harum provident, earum
-                            eius doloremque modi vero ratione sapiente. Voluptates, id vero quam repellendus incidunt
-                            enim commodi magnam omnis, adipisci minima a quisquam quaerat modi. Distinctio cumque
-                            eveniet harum quaerat, in aliquam eaque!</p>
-                        <ul class="post-meta list-inline pt-3">
-                            <li class="list-inline-item">
-                                <i class="fa fa-tags"></i> <a href="#">Tags</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-tags"></i> <a href="#">Tags</a>
-                            </li>
+                        <p class="card-text"><?php echo $article["contenu_article"]?></p>
+                        <i class="fa fa-folder"></i><a href="#"> 
+                            <?php foreach($categories as $categorie){
+                                    if($categorie["id_article"] == $article["id_article"]){
+                            ?>
+                            <?php echo $categorie["nom_categorie"]?>
 
+                            <?php } 
+                            }?>
+                        <ul class="post-meta list-inline pt-3">                    
+                            <li class="list-inline-item">    
+                            <i class="fa fa-tags"></i>
+                            <?php foreach($tagJoin as $tag){
+                                    if($tag["id_article"] == $article["id_article"]){
+                                ?>                            
+                                 <a href="#"><?php echo $tag["nom_tag"]." &nbsp "?></a>                            
+                            <?php }
+                            }?>                            
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="w-100 d-md-none"></div>
-           
-
-
+            <?php if ($i%2 == 0) {?>
+            <div class="w-100 "></div>
+            <?php }else{?>
+                <div class="w-100 d-md-none"></div>
+                <?php }?>
+            <?php $i++;} ?>           
         </div>
 
 
