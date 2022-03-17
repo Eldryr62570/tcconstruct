@@ -2,7 +2,7 @@
 
     session_start();
     // appel db
-    require_once('db/db-commentaire.php');
+    require_once('db/connectdb.php');
 
 
     /* $dataUser = 'SELECT * FROM users';
@@ -17,13 +17,13 @@
 
         $dataArticle = 'SELECT id_article FROM article';
         $getArticle = htmlspecialchars($_GET['id']);
-        foreach($db->query($dataArticle) as $row){
+        foreach($dbh->query($dataArticle) as $row){
             if ($row['id_article'] == $getArticle) {
                 $articleCourant = $row;
             }
         }
     
-    $user = $_SESSION['membre']['id_users'];
+    $user = 1;
 
         
     if (isset($user)/* ($_SESSION['user']) */) {?>
@@ -43,7 +43,7 @@
     }
 
     $sqlCommentaire = 'SELECT * FROM commentaire INNER JOIN users ON users.id_users = commentaire.id_users ORDER BY date_commentaire';
-        foreach  ($db->query($sqlCommentaire) as $row) {
+        foreach  ($dbh->query($sqlCommentaire) as $row) {
             if ($_GET['id'] == $row['id_article']) { ?>
             <div class="container-type-commentaire">
                 <div class="visu-commentaire">

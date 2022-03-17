@@ -1,5 +1,5 @@
 <?php
-    require_once('db-commentaire.php');
+    require_once('connectdb.php');
 
     $traitementCourant = null;
     $user = htmlspecialchars($_POST['userID']);
@@ -11,7 +11,7 @@
         $commentaire = htmlspecialchars($_POST['commentaire']);
         if(strlen($commentaire)<= 500) {
 
-            $insert = $db->prepare('INSERT INTO commentaire(texte_commentaire, id_users, id_article) VALUES(?, ?, ?)');
+            $insert = $dbh->prepare('INSERT INTO commentaire(texte_commentaire, id_users, id_article) VALUES(?, ?, ?)');
             $insert->execute(array($commentaire,$user,$traitementCourant));
             header("Location:../commentaire.php?id=".$traitementCourant."");
             } else {
