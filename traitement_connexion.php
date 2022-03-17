@@ -43,7 +43,6 @@ require_once "db/connectdb.php";
                                     "prenom" => $membres["prenom"],
                                     "mail" => $membres["mail"]
                                 ];                            
-
                                 echo "Félicitation vous êtes connecté.<br><br>";
 
                                 ?>
