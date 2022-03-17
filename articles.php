@@ -1,23 +1,22 @@
 <?php 
 // On appelle le fichier de connexion Mysql 
-require_once 'db/connDb.php';
+require_once 'db/connectdb.php';
 
 // On recupere l'article via GET id pour un article et ses images ( table image )
 
 $sqlarticle = "SELECT * FROM article
 LEFT JOIN `image` ON article.id_article = `image`.id_article
 WHERE article.id_article=".$_GET['id_article']."";
-$requetearticle = $pdo ->prepare($sqlarticle);
+$requetearticle = $dbh ->prepare($sqlarticle);
 $requetearticle ->execute(); 
 $rowarticle =$requetearticle->fetch();
-
 
 /* afficher all images post */
 
 $sqlimages = "SELECT * FROM article 
 LEFT JOIN `image` ON article.id_article = `image`.id_article
 WHERE article.id_article=".$_GET['id_article']."";
-$requeteimages = $pdo ->prepare($sqlimages);
+$requeteimages = $dbh ->prepare($sqlimages);
 $requeteimages ->execute(); 
 $rowimages =$requeteimages->fetchAll();
 
@@ -26,10 +25,9 @@ $rowimages =$requeteimages->fetchAll();
 $sqlcatearticle = "SELECT * FROM article 
 LEFT JOIN `categorie` ON article.id_article = categorie.id_categorie
 WHERE article.id_article=".$_GET['id_article']."";
-$requetecatarticle = $pdo ->prepare($sqlcatearticle);
+$requetecatarticle = $dbh ->prepare($sqlcatearticle);
 $requetecatarticle->execute(); 
 $rowcatarticle =$requetecatarticle->fetch();
-
 
 /* jointure table article / possede / tags */
 
@@ -37,14 +35,12 @@ $sqlarticletag = "SELECT * FROM article
     INNER JOIN possede ON article.id_article = possede.id_article
     INNER JOIN tag ON tag.id_tag = possede.id_tag
     WHERE article.id_article =".$_GET['id_article']."";
-    $requetearticletag = $pdo ->prepare($sqlarticletag);
+    $requetearticletag = $dbh ->prepare($sqlarticletag);
     $requetearticletag->execute(); 
     $rowarticletags =$requetearticletag->fetchAll();
 
     /* page suivant precedant  */
 ?>
-
-
 
 <div class="container mb80">
             <div class="vtimeline-block">

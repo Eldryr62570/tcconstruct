@@ -11,10 +11,10 @@
             $mail = htmlspecialchars($_POST["mail"]);
         }
         if(isset($_POST["password"]) && (!empty($_POST["password"]))){
-            $password = md5(htmlspecialchars($_POST["password"]));
+            $password = password_hash(htmlspecialchars($_POST["password"]),PASSWORD_DEFAULT);
         }
         if(isset($_POST["passwordc"]) && (!empty($_POST["passwordc"]))){
-            $passwords = md5(htmlspecialchars($_POST["passwordc"]));
+            $passwords = htmlspecialchars($_POST["passwordc"]);
         }
         if(isset($_POST["phone"]) && (!empty($_POST["phone"]))){
             $phone = htmlspecialchars($_POST["phone"]);
@@ -31,20 +31,20 @@
     }else{
         
     }
-
+    
     $pdoStat = $dbh->prepare('SELECT * FROM users WHERE mail = ?');
 
     $pdoStat->execute(array($mail));
 
     $row = $pdoStat->fetch(PDO::FETCH_ASSOC);
-
-    if ($mail == $row['mail']) {
+    
+    if (!empty($row)) {
         header('Location: ../inscription.php?error');
-    } else if ($password != $passwords) {
+    } else if (!password_verify($passwords,$password)) {
         header('Location: ../inscription.php?mdperror');
     } else {
-        $sqlRequest = "INSERT INTO `users` (`nom`, `prenom`, `mail`, `password`, `phone`, `adresse`, `code_postal`, `ville`, `id_role`) 
-                        VALUES (?,?,?,?,?,?,?,?,'1');";
+        $sqlRequest = "INSERT INTO `users` (`nom`, `prenom`, `mail`, `password`, `phone`, `adresse`, `code_postal`, `ville`, `id_role`,photo) 
+                        VALUES (?,?,?,?,?,?,?,?,'1','aa');";
         $pdoStat = $dbh -> prepare($sqlRequest);
         $pdoStat->execute(array($name,$firstname,$mail,$password,$phone,$adresse,$cp,$ville));
         $row = $pdoStat->fetchall(PDO::FETCH_ASSOC);

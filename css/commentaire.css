@@ -1,0 +1,77 @@
+#section-commentaire form {
+    flex-direction: column;
+    width: 80%;
+}
+
+#section-commentaire h2 {
+    font-size: 1.2rem;
+}
+
+#section-commentaire textarea {
+    width: 90%;
+    min-height: 100px;
+    resize : none;
+}
+
+#section-commentaire input {
+    min-width: 100px;
+    min-height: 20px;
+}
+
+#counter-commentaire {
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    padding: 1vh;
+    background-color: rgb(218, 218, 218);;
+    color: #666;
+    border-radius: 5px;
+}
+
+#input-form-commentaire {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8vh;
+}
+
+#input-form-commentaire label{
+    width: 90%;
+}
+
+.container-type-commentaire {
+    display: flex;
+    justify-content: center;
+}
+
+.visu-commentaire {
+    display: flex;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.container-commentaire {
+    background-color: rgb(218, 218, 218);
+    width: 90vw;
+    border-radius: 10px;
+    margin-bottom: 3vh;
+}
+
+.pp-commentaire img{
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.data-commentaire {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.texte-commentaire {
+    margin: 10px 20px;
+    color: #666;
+    word-wrap: break-word;
+}

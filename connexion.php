@@ -1,6 +1,3 @@
-<?php
-    require("db/readArticle.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités</title>
+    <title>Connexion</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -21,77 +18,49 @@
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/actualite.css">
+    <link rel="stylesheet" href="css/styleconnexion.css">
+    <script src="https://kit.fontawesome.com/eaf2c4b5d9.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="slick.css">
 </head>
 
 <body>
-    <?php require("header.php");?>
+
+<?php require("header.php");?>
     <!-- bradcam_area  -->
     <div class="bradcam_area bradcam_bg_2">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Nos Actualités</h3>
-                        <p><a href="index.php">Accueil</a> / Nos Actualités</p>
+                        <h3>Connexion</h3>
+                        <p><a href="index.php">Accueil</a> / Connexion</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Actualite affichage -->
-    <div class="container-fluid  height_actu">        
-        <div class="row justify-content-center mx-0">
-            <?php 
-            
-            while ($article2 = $article->fetch()){
-                   
-                ?>
-            <div class="col-md-5 px-5 mt-5 flex-row d-flex justify-content-center">
-                <!-- Cards actu -->
-                <div class="card">
-                    <div class="card-body">
-                        <img src="<?php echo $article2["imgp_article"]?>" class="img-fluid rounded" alt="Image title">
-                        <h5 class="card-title"><a href="<?php echo "actualite_article.php?id_article=".$article2["id_article"]?>"><?php echo $article2["titre_article"]?></a></h5>
-                        <ul class="post-meta list-inline pb-2">
-                            <li class="list-inline-item">
-                                <i class="fa fa-user-circle-o"></i> <a href="#">Tc construct</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="fa fa-calendar-o"></i> <a href="#"><?php echo $article2["date_article"]?></a>
-                            </li>
-                        </ul>
-                        <p class="card-text"><?php echo $article2["contenu_article"]?></p>
-                        <i class="fa fa-folder pt-2"></i>                          
-                                       <?php                                        
-                                        $categorie = $categories->fetch();
-                                        echo "<a href ='#'>".$categorie["nom_categorie"]."</a>";
-                                       ?>     
-                        <ul class="post-meta list-inline pt-3">                    
-                            <li class="list-inline-item">    
-                            <i class="fa fa-tags"></i>
-                            <?php foreach($tagJoin as $tag){
-                                    if($tag["id_article"] == $article2["id_article"]){
-                                ?>                            
-                                 <a href="#"><?php echo $tag["nom_tag"]." &nbsp "?></a>                            
-                            <?php }
-                            }?>                            
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <?php if ($i%2 == 0) {?>
-            <div class="w-100 "></div>
-            <?php }else{?>
-                <div class="w-100 d-md-none"></div>
-                <?php }?>
-            <?php $i++;} ?>           
+
+    <div class="formulaire-connexion mb-5">
+        <div class="connexion-bg">
+            <h1>CONNEXION</h1>
         </div>
+        
+        <form action="db/traitement_connexion.php" method="post">
+            E-mail: <input type="mail" name="mail" />
+            <br />
+            Mot de passe: <input type="password" name="mdp" />
+            <br />
+            <input type="submit" name="connexion" value="Connexion" class="boutton-connexion" />
+            <?php if(isset($_GET["sucess"] )){?>
+            <div class="text-success text-center">
+                Vous êtes bien inscrit, veuillez vous connecter 
+            </div>
+            <?php }?>
+        </form>
+    </div>
 
-
-
-        <div class="mt-5"></div>
-        <!-- footer_start  -->
+      <!-- footer_start  -->
         <!-- chose_us_area start -->
         <?php include('newchoose.php'); ?>
         <!-- chose_us_area end -->
@@ -113,8 +82,9 @@
                 </div>
             </div>
         </div>
-        <!-- JS here -->
-        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="js/vendor/jquery-1.12.4.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -157,5 +127,3 @@
             });
         </script>
 </body>
-
-</html>

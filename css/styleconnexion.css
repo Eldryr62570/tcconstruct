@@ -1,0 +1,59 @@
+body {
+  font-family: "Raleway", sans-serif;
+}
+.formulaire-connexion {
+  display: flex;
+  width: 25%;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  height: 550px;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: #fff;
+}
+
+.formulaire-connexion::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-image: url(../img/pattern.svg);
+  height: 160px;
+  width: 150px;
+  top: 72%;
+  left: 32%;
+  z-index: -1;
+  background-repeat: no-repeat;
+}
+
+.formulaire-connexion input {
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  margin-top: 5px;
+  margin-bottom: 23px;
+  height: 30px;
+}
+
+.formulaire-connexion input.boutton-connexion {
+  background-color: #fff;
+  border: 1px solid #f0542c;
+  font-family: "Raleway", sans-serif;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.4s;
+  height: 45px;
+  font-size: 16px;
+  color: #f0542c;
+}
+.formulaire-connexion input.boutton-connexion:hover {
+  background-color: #f0542c;
+  transition: 0.4s;
+  color: #fff;
+}
+
+.connexion-bg {
+  margin-bottom: 50px;
+}

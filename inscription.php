@@ -5,7 +5,7 @@
         header('Location: index.php');
         exit();
     }
-    
+   
 
 ?>
 
@@ -62,11 +62,11 @@
         </div>
 
         <?php if (isset($_GET['error'])){ ?>
-            <p class="error">Votre Nom d'utilisateur ou votre mail est déjà existant</p>
+            <p class="error">E-mail déja utilisée </p>
         <?php } ?>
 
         <?php if (isset($_GET['mdperror'])){ ?>
-            <p class="error">Vos mot de passe ne correspondent pas !</p>
+            <p class="error">Vos deux mot de passe ne correspondent pas</p>
         <?php } ?>
 
         <form action="db/inscription.php" method="post">
