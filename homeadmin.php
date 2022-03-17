@@ -53,15 +53,16 @@
         </div>
     </div>
     <div class="container">
+    <a target="_blank" href="paneladmin.php?id=1">
             <div class="gallerybig">
               <!-- get id panel -->
-                    <a target="_blank" href="paneladmin.php">
+                    
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <div class="desc">Voir Panel Users</div>
-                    </a>
+                    
                     
             </div>
-
+    </a>
             <div class="gallerybig">
                     <a target="_blank" href="paneladmin.php">
                     <i class="fa fa-archive" aria-hidden="true"></i>
