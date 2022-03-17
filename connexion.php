@@ -45,12 +45,18 @@
         <div class="connexion-bg">
             <h1>CONNEXION</h1>
         </div>
+        
         <form action="traitement_connexion.php" method="post">
             E-mail: <input type="mail" name="mail" />
             <br />
             Mot de passe: <input type="password" name="mdp" />
             <br />
             <input type="submit" name="connexion" value="Connexion" class="boutton-connexion" />
+            <?php if(isset($_GET["sucess"] )){?>
+            <div class="text-success text-center">
+                Vous êtes bien inscrit, veuillez vous connecter 
+            </div>
+            <?php }?>
         </form>
     </div>
 

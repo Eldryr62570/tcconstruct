@@ -3,8 +3,6 @@
 session_start();
 
 require_once "db/connectdb.php";
-
-
                         // on verifie que le formulaire n'est pas vide
                         if (!empty($_POST)) {
 
@@ -46,9 +44,7 @@ require_once "db/connectdb.php";
                                 echo "Félicitation vous êtes connecté.<br><br>";
 
                                 ?>
-
                                     <a href="#"> on met la bonne redirection</a>
-
                                 <?php
 
                                     }
