@@ -24,6 +24,7 @@ require_once "connectdb.php";
                                 ));
                                 $membres = $query->fetch();
 
+                                
                                 if (!$membres) { 
                                     echo "Désolé cette adresse mail et/ou le mot de pass n'existe pas.";
 
@@ -31,20 +32,27 @@ require_once "connectdb.php";
                                 else {
 
                             // ici si l'utilisateur existe alors on verifie son mot de pass
-                                if (!password_verify($_POST["mdp"], $membres["PASSWORD"])) {
+                                if (!password_verify($_POST["mdp"], $membres["password"])) {
                                     echo "Désolé cette adresse mail et/ou le mot de pass n'existe pas.";
                                 }
                                 else {
+                                    session_start();
+                                    $_SESSION['connectee'] = 1;
                                     $_SESSION["membres"] = [
                                     "id" => $membres["id_users"],
                                     "nom" => $membres["nom"],
                                     "prenom" => $membres["prenom"],
-                                    "mail" => $membres["mail"]
+                                    "mail" => $membres["mail"],
+                                    "phone" => $membres['phone'],
+                                    "adresse" => $membres["adresse"],
+                                    "code_postal" => $membres["code_postal"],
+                                    "ville" => $membres["ville"]
                                 ];                            
-                                echo "Félicitation vous êtes connecté.<br><br>";
+
+
+                                header('Location: ../account.php')
 
                                 ?>
-                                    <a href="#"> on met la bonne redirection</a>
                                 <?php
 
                                     }

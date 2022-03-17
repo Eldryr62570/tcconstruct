@@ -2,7 +2,7 @@
 
 require 'db/auth.php';
 forcer_utilisateur_connecte();
-session_start(); 
+$session = $_SESSION['membres'];
 
 ?>
 
@@ -79,15 +79,15 @@ session_start();
                     <p>Code postal :</p>
                     <p>Ville :</p>
                 </div>
-                <?php var_dump($_SESSION['membres']); ?>
+            
                 <div class="session">
-                    <p><?php echo $_SESSION['nom']; ?></p>
-                    <p><?php echo $_SESSION['prenom']; ?></p>
-                    <p><?php echo $_SESSION['mail']; ?></p>
-                    <p><?php echo $_SESSION['phone']; ?></p>
-                    <p><?php echo $_SESSION['adresse']; ?></p>
-                    <p><?php echo $_SESSION['code_postal']; ?></p>
-                    <p><?php echo $_SESSION['ville']; ?></p>
+                    <p><?php echo $session['nom']; ?></p>
+                    <p><?php echo $session['prenom']; ?></p>
+                    <p><?php echo $session['mail']; ?></p>
+                    <p><?php echo $session['phone']; ?></p>
+                    <p><?php echo $session['adresse']; ?></p>
+                    <p><?php echo $session['code_postal']; ?></p>
+                    <p><?php echo $session['ville']; ?></p>
                 </div>
             </div>
         </div>
