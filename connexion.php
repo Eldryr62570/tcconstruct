@@ -46,7 +46,7 @@
             <h1>CONNEXION</h1>
         </div>
         
-        <form action="traitement_connexion.php" method="post">
+        <form action="db/traitement_connexion.php" method="post">
             E-mail: <input type="mail" name="mail" />
             <br />
             Mot de passe: <input type="password" name="mdp" />
