@@ -11,7 +11,6 @@ $requetearticle = $dbh ->prepare($sqlarticle);
 $requetearticle ->execute(); 
 $rowarticle =$requetearticle->fetch();
 
-
 /* afficher all images post */
 
 $sqlimages = "SELECT * FROM article 
@@ -30,7 +29,6 @@ $requetecatarticle = $dbh ->prepare($sqlcatearticle);
 $requetecatarticle->execute(); 
 $rowcatarticle =$requetecatarticle->fetch();
 
-
 /* jointure table article / possede / tags */
 
 $sqlarticletag = "SELECT * FROM article
@@ -43,8 +41,6 @@ $sqlarticletag = "SELECT * FROM article
 
     /* page suivant precedant  */
 ?>
-
-
 
 <div class="container mb80">
             <div class="vtimeline-block">

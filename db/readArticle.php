@@ -8,7 +8,6 @@
     $pdoStat->execute();
     $tagJoin = $pdoStat->fetchAll(PDO::FETCH_ASSOC);
 
-
     $sqlRequest = "SELECT * FROM article INNER JOIN categorie ON article.id_categorie = categorie.id_categorie";
     $article = $dbh -> prepare($sqlRequest);
     $article->execute();
@@ -17,8 +16,6 @@
     $categories = $dbh -> prepare($sqlRequest);
     $categories->execute();
     
-    
-
     $i = 1;
     
 ?>
