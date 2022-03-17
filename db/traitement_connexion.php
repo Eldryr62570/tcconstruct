@@ -2,7 +2,7 @@
 // ici on demarre la session PHP
 session_start();
 
-require_once "db/connectdb.php";
+require_once "connectdb.php";
                         // on verifie que le formulaire n'est pas vide
                         if (!empty($_POST)) {
 
