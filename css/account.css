@@ -1,0 +1,17 @@
+.profil {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 50px auto;
+}
+
+.profil h4 {
+    font-size: 200%;
+}
+
+.separator {
+    width: 100%;
+    height: 3px;
+    background-color: lightgray;
+    border-radius: 50%;
+}

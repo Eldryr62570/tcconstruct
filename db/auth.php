@@ -4,7 +4,7 @@ function est_connecte(): bool {
     if (session_status() === PHP_SESSION_NONE) {
         session_start(); 
     }
-    return !empty($_SESSION['connecte']);
+    return !empty($_SESSION['connectee']);
 }
 
 function forcer_utilisateur_connecte(): void {
