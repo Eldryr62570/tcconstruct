@@ -114,7 +114,8 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="#editEmployeeModal<?php echo $alluser["id_users"] ?>" class="edit" data-toggle="modal">
+                                <a href="#editEmployeeModal<?php echo $alluser["id_users"] ?>" class="edit"
+                                    data-toggle="modal">
 
 
                                     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -133,7 +134,7 @@
                             <td><?php echo $alluser["nom_role"]?></td>
 
                         </tr>
-                        <!-- Edit Modal HTML -->
+                        <!-- EDIT FORM -->
                         <div id="editEmployeeModal<?php echo $alluser["id_users"] ?>" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -146,60 +147,64 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label>Nom</label>
-                                                <input type="text" class="form-control" name="nom_us" required></input>
+                                                <input type="text" class="form-control" name="nom_edit"
+                                                    required></input>
                                             </div>
                                             <div class="form-group">
                                                 <label>Prénom</label>
-                                                <input type="text" class="form-control" name="prenom_us"
+                                                <input type="text" class="form-control" name="prenom_edit"
                                                     required></input>
                                             </div>
                                             <div class="form-group">
                                                 <label>Mail</label>
-                                                <input type="email" class="form-control" name="mail_us"
+                                                <input type="email" class="form-control" name="mail_edit"
                                                     required></input>
                                             </div>
                                             <div class="form-group">
                                                 <label>Mot de passe</label>
-                                                <input type="password" class="form-control" name="mdp_us"
+                                                <input type="password" class="form-control" name="mdp_edit"
                                                     required></input>
                                             </div>
                                             <div class="form-group">
                                                 <label>Confirmez votre Mot de passe</label>
-                                                <input type="password" class="form-control" name="mdpconf_us"
+                                                <input type="password" class="form-control" name="mdpconf_edit"
                                                     required></input>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label>Adresse</label>
+                                                <input type="text" class="form-control" name="adresse_edit"
+                                                    required></input>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Photo</label>
+                                                <input type="text" class="form-control" name="photo_edit"
+                                                    required></input>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Code postal</label>
+                                                <input type="text" class="form-control" name="postal_edit"
+                                                    required></input>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Ville</label>
+                                                <input type="text" class="form-control" name="ville_edit"
+                                                    required></input>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nom rôle</label>
+                                                <input type="text" class="form-control" name="role_edit"
+                                                    required></input>
+                                            </div>
+                                            <input type="hidden" id="idUserInput" name="id_users"
+                                                value="<?php echo $alluser["id_users"] ?>">
+                                            <div class="modal-footer">
+                                                <input type="button" class="btn btn-default" data-dismiss="modal"
+                                                    value="Cancel">
+                                                <input type="submit" class="btn btn-success" value="Add" name="adduser">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Adresse</label>
-                                            <input type="text" class="form-control" name="prenom_us" required></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Photo</label>
-                                            <input type="text" class="form-control" name="prenom_us" required></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Code postal</label>
-                                            <input type="text" class="form-control" name="prenom_us" required></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Ville</label>
-                                            <input type="text" class="form-control" name="prenom_us" required></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nom rôle</label>
-                                            <input type="text" class="form-control" name="prenom_us" required></input>
-                                        </div>
-                                        <input type="hidden" id="idUserInput" name="id_users" value="<?php echo $alluser["id_users"] ?>">
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-default" data-dismiss="modal"
-                                                value="Cancel">
-                                            <input type="submit" class="btn btn-success" value="Add" name="adduser">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-default" data-dismiss="modal"
-                                                value="Cancel">
-                                            <input type="submit" class="btn btn-info" value="Save">
-                                        </div>
+
                                     </form>
                                 </div>
                             </div>
@@ -207,19 +212,6 @@
                         <?php }?>
                     </tbody>
                 </table>
-
-                <div class="clearfix">
-                    <div class="hint-text">Affichage <b>5</b> sur <b>25</b> pages</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
@@ -262,12 +254,20 @@
                             <input type="text" class="form-control" name="postal_us" required>
                         </div>
                         <div class="form-group">
+                            <label>Telephone</label>
+                            <input type="tel" name="phone_us" id="phone" placeholder="Format : 06 06 06 06 06" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}" required>
+                        </div>
+                        <div class="form-group">
                             <label>Ville</label>
                             <input type="text" class="form-control" name="ville_us" required>
                         </div>
                         <div class="form-group">
                             <label>Nom rôle</label>
                             <input type="text" class="form-control" name="role_us" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mot de passe</label>
+                            <input type="password" class="form-control" name="mdp_us" required></input>
                         </div>
 
                         <div class="modal-footer">
