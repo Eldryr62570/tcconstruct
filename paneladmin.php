@@ -114,12 +114,11 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="#editEmployeeModal<?php echo $alluser["id_users"] ?>" class="edit"
-                                    data-toggle="modal">
+                                <a href="#editEmployeeModal<?php echo $alluser["id_users"] ?>" class="edit" data-toggle="modal">
 
 
                                     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                <a href="#deleteEmployeeModalz" class="delete" data-toggle="modal"><i
                                         class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
                             <td><?php echo $alluser["id_users"]?></td>
@@ -206,6 +205,30 @@
                                         </div>
 
                                     </form>
+                                    <!-- Delete Modal HTML -->
+                                    <div id="deleteEmployeeModal" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form>
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Supprimer user</h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>êtes vous sûre de vouloir supprimer ?</p>
+                                                        <p class="text-warning"><small>Cette Action supprimera</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <input type="button" class="btn btn-default"
+                                                            data-dismiss="modal" value="Cancel">
+                                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +278,8 @@
                         </div>
                         <div class="form-group">
                             <label>Telephone</label>
-                            <input type="tel" name="phone_us" id="phone" placeholder="Format : 06 06 06 06 06" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}" required>
+                            <input type="tel" name="phone_us" id="phone" placeholder="Format : 06 06 06 06 06"
+                                pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}" required>
                         </div>
                         <div class="form-group">
                             <label>Ville</label>
@@ -282,27 +306,7 @@
         </div>
     </div>
 
-    <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">Supprimer user</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>êtes vous sûre de vouloir supprimer ?</p>
-                        <p class="text-warning"><small>Cette Action supprimera</small></p>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
 
     <!-- contact_us_start  -->
     <?php include('footer.php'); ?>
