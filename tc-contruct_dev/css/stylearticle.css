@@ -1,0 +1,265 @@
+
+body{
+    margin-top:50px;
+    background:#f3f3f3;
+}
+
+
+
+.vtimeline-block {
+    margin-bottom: 20%;
+    background-color: #f3ededc5;
+    padding: 40px 40px;
+}
+
+.vtimeline-content {
+
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    padding: 15px 20px !important;
+    border-radius: 3px;
+    text-align: left;
+    
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
+}
+
+.img-fluid {
+    max-height: 600px;
+    border: 1px solid;
+    color: #252525;
+}
+
+.vtimeline-content h3 {
+    font-weight: 600;
+    margin: 0px;
+    font-size: 2em !important;
+}
+
+.vtimeline-content p {
+    font-size: 0.9em;
+    margin: 0;
+    
+}
+
+.postname {
+    padding: 0px 70px;
+    margin: 0px 30px;
+    margin-top: 5% !important;
+}
+
+.vtimeline-point {
+    position: relative;
+    display: block;
+/*     vertical-align: top;
+ */    margin-bottom: 30px;
+}
+
+.descarticle {
+    padding: 60px 120px;
+}
+.critarticle {
+    padding: 0px 120px;
+    margin-top: -5%;
+}
+
+.container-crit i {
+    font-size: 1.5em;
+    border: 1px solid;
+    border-radius: 2.5em;
+    background: #ffffff !important;
+    padding: 5px 5px;
+}
+
+.container-crit {
+    padding: 60px 0px;
+
+}
+
+.column-left{
+     float: left; width: 33.333%;
+}
+
+.column-right{
+     float: right; width: 33.333%;
+}
+
+.column-center{
+     display: inline-block; width: 33.333%;
+}
+
+
+.vtimeline-icon {
+    position: relative;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    background: #4782d3;
+    border-radius: 50%;
+    float: left;
+    text-align: center;
+    line-height: 50px;
+    z-index: 99;
+    margin-left: 280px;
+}
+
+.vtimeline-icon i {
+    display: block;
+    font-size: 1.5em;
+    line-height: 50px;
+    
+}
+
+.vtimeline-date {
+    width: 260px;
+    text-align: right;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-weight: 400;
+    color: #374054;
+}
+.post-meta {
+    margin-top: -90px;
+    float: right;
+}
+
+.post-meta li:not(:last-child) {
+    margin-right: 10px;
+}
+h3 {
+    font-family: "Montserrat", sans-serif;
+    color: #252525;
+    font-weight: 700;
+    font-variant-ligatures: common-ligatures;
+    margin-top: 0;
+    text-align: center;
+    letter-spacing: -0.2px;
+    line-height: 1.3;
+}
+.mb20 {
+    margin-bottom: 20px !important;
+}
+
+.presimg {
+    text-align: center !important;
+    padding: 20px 40px !important;
+    
+   
+}
+
+.presimg h4 {
+    font-size: 2.4em !important;
+}
+
+.presimg i {
+    font-size: 1.6em !important;
+    margin: 0px 30px;
+    margin-left: -30px;
+}
+ 
+  div.gallery {
+    margin: 10px;
+    border: 1px solid #ccc;
+    margin-top: 1%;
+    width: 490px;
+    display: inline-block;
+    max-width: auto;
+  }
+
+ /*  div.gallerybig {
+    margin: 10px;
+    border: 1px solid #ccc;
+    margin-top: 1%;
+    width: 490px;
+    display: inline-block;
+  } */
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    min-height: 340px;
+    max-height: 700px;
+  }
+  
+  div.desc {
+    padding: 1px;
+    text-align: center;
+  }
+
+  .boutonarticle {
+    text-align: center !important;
+    padding: 20px 10px;
+    transition: 0.5s;  
+  }
+
+  .boutonarticle a {
+    color: #e6e6e6;
+  }
+
+
+  .boutonarticle1 {
+    float: left;
+    padding: 60px 10px; 
+
+  }
+  .boutonarticle2 {
+    float: right;
+    padding: 60px 10px;
+    
+    
+}
+
+ .boutonarticle1 a {
+    color: #e6e6e6;
+    
+  }
+  .boutonarticle2 a {
+    color: #e6e6e6;
+    
+  }
+
+
+
+@media screen and (max-width: 800px) {
+    
+    .column-left , .column-center , .column-right {
+      width: 100% !important;
+      padding: 10px 0px;
+    }
+
+
+      div.gallerybig img {
+        padding : 0px 0px !important;
+        width: 300px;
+        height: 300px;
+      }
+      div.gallerybig {
+        padding : 0px 0px !important;
+        width: 300px;
+        height: 350px;
+ 
+      }
+
+      .post-meta {
+       font-size: 0.7em ;
+        float: right;
+        padding: 0px 40px;
+        width: 100%;
+    }
+
+    .postname {
+        float: left !important;
+        padding: 0px 0px;
+        font-size: 1em;
+      
+    }
+
+    .postname h3 {
+        margin-top: 2%;
+      
+    }
+}
