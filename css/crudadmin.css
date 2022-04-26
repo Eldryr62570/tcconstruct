@@ -6,13 +6,23 @@ body {
 	font-size: 13px;
 }
 
+ul {
+	margin: 0px 0px !important;
+
+}
+
+ul li a{
+	text-decoration: none !important;
+	border-bottom: none !important;
+}
+
 
  div.gallerybig {
-    margin: 30px 10px !important;
+    margin: 100px 24px !important;
     border: 1px solid #ccc;
 	border-radius: 0.4em;
     margin-top: 1%;
-    min-width: 250px;
+    min-width: 500px;
     display: inline-block;
 	text-align: center;
 	background-color: rgb(233, 224, 224);

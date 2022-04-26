@@ -91,8 +91,8 @@ $sqlarticletag = "SELECT * FROM article
                 <div class="presimg"><h4><i class="fa fa-image"></i>Photos</h4></div>
                 <?php foreach ($rowimages as $rowimage) { ?>
                 <div class="gallery">
-                    <a target="_blank" href="../img/screen01.jpg">
-                        <img src="img/article/<?php echo $rowimage['url_image'];?>.jpg" alt="Mountains" width="590" height="340">
+                    <a target="_blank" href="img/article/<?php echo $rowimage['titre_image'];?>.jpg">
+                        <img src="img/article/<?php echo $rowimage['titre_image'];?>.jpg" alt="Mountains" width="590" height="340">
                     </a>
                 </div>
 

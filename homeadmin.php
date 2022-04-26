@@ -1,3 +1,14 @@
+<?php 
+/* session_start();
+if(!isset($_SESSION['login'])) {
+    header('location: index.php');    
+}
+if ($_SESSION['role'] == 2) {
+ */
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -40,12 +51,13 @@
 
 <!-- panel home admin -->
 
-<div class="bradcam_area bradcam_bg_2">
+
+<div class="bradcam_area bradcam_bg_2 mb-50">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Home Admin</h3>
+                        <h3>Accueil Administration</h3>
                         <p><a href="index.php">Admin</a> / Accueil</p>
                     </div>
                 </div>
@@ -55,51 +67,38 @@
     <div class="container">
             <div class="gallerybig">
               <!-- get id panel -->
-                    <a target="_blank" href="paneladmin.php">
+                    <a href="panelusers.php">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <div class="desc">Voir Panel Users</div>
-                    </a>
-                    
+                    </a>        
             </div>
 
             <div class="gallerybig">
-                    <a target="_blank" href="paneladmin.php">
+                    <a href="panelarticle.php">
                     <i class="fa fa-archive" aria-hidden="true"></i>
                     <div class="desc">Voir Panel Articles</div>
-                    </a>
-                    
+                    </a>        
             </div>
 
             <div class="gallerybig">
-              
-                    <a target="_blank" href="paneladmin.php">
-                    <i class="fa fa-folder" aria-hidden="true"></i>
-                    <div class="desc">Voir Panel Catégories</div>
-                    </a>
-                    
-            </div>
-
-            <div class="gallerybig">
-                    <a target="_blank" href="paneladmin.php">
-                    <i class="fa fa-comments" aria-hidden="true"></i>
-                    <div class="desc">Voir Panel Commentaires</div>
-                    </a>
-                    
-            </div>
-            <div class="gallerybig">
-                    <a target="_blank" href="paneladmin.php">
+                    <a href="panelimages.php">
                     <i class="fa fa-file-image-o" aria-hidden="true"></i>
                     <div class="desc">Voir Panel Images</div>
-                    </a>
-                    
+                    </a>            
             </div>
             <div class="gallerybig">
-                    <a target="_blank" href="paneladmin.php">
+                    <a href="paneltags.php">
                     <i class="fa fa-tag" aria-hidden="true"></i>
                     <div class="desc">Voir Panel Tags</div>
-                    </a>
-                    
+                    </a>          
             </div>
+            <div class="gallerybig">
+                    <a href="panelcategorie.php">
+                    <i class="fa fa-folder" aria-hidden="true"></i>
+                    <div class="desc">Voir Panel Catégories</div>
+                    </a>           
+            </div>
+
 </div>
 
 
@@ -140,7 +139,6 @@
     <script src="js/main.js"></script>
 
 
-
   <!-- Modal -->
   <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -167,6 +165,9 @@
 
         });
     </script>
+
+    
 </body>
 
 </html>
+
