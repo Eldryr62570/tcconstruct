@@ -1,11 +1,14 @@
+<?php
+    require("db/readArticle.php");
+?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Rénitialiser - mdp</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -25,16 +28,14 @@
 </head>
 
 <body>
-
-<?php require("header.php");?>
+    <?php require("header.php");?>
     <!-- bradcam_area  -->
     <div class="bradcam_area bradcam_bg_2">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Connexion</h3>
-                        <p><a href="index.php">Accueil</a> / Connexion</p>
+                        <h3>Changer votre mot de passe</h3>
                     </div>
                 </div>
             </div>
@@ -43,26 +44,28 @@
 
     <div class="formulaire-connexion mb-5">
         <div class="connexion-bg">
-            <h1>CONNEXION</h1>
+            <h2>Changement de mot de passe</h2>
         </div>
-        
-        <form action="db/traitement_connexion.php" method="post">
-            E-mail: <input type="mail" name="mail" />
+
+        <form method="post" action="db/traitement_changement_mdp.php">
+            Nouveau mot de passe: <input type="password" name="mdp" />
             <br />
-            Mot de passe: <input type="password" name="mdp" />
+            Confirmer mot de passe: <input type="password" name="confirm_mdp" />
             <br />
-            <input type="submit" name="connexion" value="Connexion" class="boutton-connexion" />
+            <input type="submit" name="Sauvegarder" value="enregistrer" class="boutton-connexion" />
             <?php if(isset($_GET["sucess"] )){?>
             <div class="text-success text-center">
-                Vous êtes bien inscrit, veuillez vous connecter 
+                Votre mot de passe à bien était changer.
+                <br/>
+                Veuillez vous connectez.
             </div>
             <?php }?>
-        </form><a href="mdp_oublie.php">mot de passe oublié ?</a>
+        </form>
     </div>
 
-      <!-- footer_start  -->
-        <!-- chose_us_area start -->
-        <?php include('newchoose.php'); ?>
+    <!--/ bradcam_area  -->
+            <!-- chose_us_area start -->
+            <?php include('newchoose.php'); ?>
         <!-- chose_us_area end -->
 
         <?php include('testimonial.php'); ?>
@@ -70,21 +73,8 @@
         <!-- contact_us_start  -->
         <?php include('footer.php'); ?>
         <!-- footer_end  -->
-        <!-- Modal -->
-        <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="serch_form">
-                        <input type="text" placeholder="search">
-                        <button type="submit">search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    <!-- JS here -->
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <!-- JS here -->
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="js/vendor/jquery-1.12.4.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -127,3 +117,5 @@
             });
         </script>
 </body>
+
+</html>
