@@ -2,7 +2,7 @@
 // ici on demarre la session PHP
 session_start();
 
-require_once "db/connectdb.php";
+require "connectdb.php";
                         // on verifie que le formulaire n'est pas vide
                         if (!empty($_POST)) {
 
@@ -34,6 +34,8 @@ require_once "db/connectdb.php";
                                 if (!password_verify($_POST["mdp"], $membres["PASSWORD"])) {
                                     echo "Désolé cette adresse mail et/ou le mot de pass n'existe pas.";
                                 }
+
+                                
                                 else {
                                     $_SESSION["membres"] = [
                                     "id" => $membres["id_users"],
@@ -41,12 +43,10 @@ require_once "db/connectdb.php";
                                     "prenom" => $membres["prenom"],
                                     "mail" => $membres["mail"]
                                 ];                            
-                                echo "Félicitation vous êtes connecté.<br><br>";
+                                header("location: ../index.php");
 
-                                ?>
-                                    <a href="#"> on met la bonne redirection</a>
-                                <?php
-
+                             
+                                    
                                     }
                                 }
                             }

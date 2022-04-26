@@ -50,7 +50,7 @@
                 <!-- Cards actu -->
                 <div class="card">
                     <div class="card-body">
-                        <img src="<?php echo $article2["imgp_article"]?>" class="img-fluid rounded" alt="Image title">
+                        <img src="img/article/<?php echo $article2["imgp_article"]?>" class="img-fluid rounded" alt="Image title">
                         <h5 class="card-title"><a href="<?php echo "actualite_article.php?id_article=".$article2["id_article"]?>"><?php echo $article2["titre_article"]?></a></h5>
                         <ul class="post-meta list-inline pb-2">
                             <li class="list-inline-item">

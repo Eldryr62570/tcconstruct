@@ -8,3 +8,4 @@ $requetearticle = $pdo ->prepare($sqlarticle);
 $requetearticle ->execute(); 
 $rowarticle =$requetearticle->fetch();
 ?>
+
