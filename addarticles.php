@@ -1,19 +1,13 @@
 <?php
-  
-  include 'db/classeusers.php';
-  $customerObj = new Users();
+ 
+  include 'db/classearticle.php';
+  $customerObj = new Articles();
 
-  if(isset($_GET['editId']) && !empty($_GET['editId'])) {
-    $editId = $_GET['editId'];
-    $customer = $customerObj->displyaRecordById($editId);
+  if(isset($_POST['submit'])) {
+    $customerObj->insertData($_POST);
   }
 
-  if(isset($_POST['update'])) {
-    $customerObj->updateRecord($_POST);
-  }  
-    
 ?>
-
 
 <!doctype html>
 <html class="no-js" lang="fr">
@@ -62,17 +56,19 @@
                 <div class="col-xl-12">
               
                     <div class="bradcam_text text-center">
-                        <h3>Administration des utilisateurs</h3>
-                        <p><a href="index.php">Admin</a> / Panel - Editer Utilisateurs</p>
+                        <h3>Administration des Articles</h3>
+                        <p><a href="index.php">Admin</a> / Panel - Ajouter Articles</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+            <div class="card text-center" style="padding:15px;">
+            </div><br> 
 
 <div class="container-xl">
-      <?php
+    <?php
         if (isset($_GET['msg1']) == "insert") {
         echo "<div class='alert alert-success alert-dismissible'>
                 <button type='button' class='close' data-dismiss='alert'>×</button>
@@ -101,36 +97,43 @@
     <div class="row">
         <div class="col-md-5 mx-auto">
             <div class="card">
-                <div class="card-header bg-primary">
-                    <h4 class="text-white">Update data chien</h4>
+                <div class="card-header bg-dark text-white">
+                    <h4 class="text-white">Ajouter un Article</h4>
                 </div>
                 <div class="card-body bg-light">
-                  <form action="editusers.php" method="POST">
+                  <form action="addusers.php" method="POST">
                     <div class="form-group">
-                      <label for="nom">Nom:</label>
-                      <input type="text" class="form-control" name="unom" value="<?php echo $customer['nom']; ?>" required="">
+                      <label for="prenom">Titre Article:</label>
+                      <input type="text" class="form-control" name="titreart" placeholder="Entrez votre titre" required="">
                     </div>
                     <div class="form-group">
-                      <label for="prenom">Prénom:</label>
-                      <input type="text" class="form-control" name="uprenom" value="<?php echo $customer['prenom']; ?>" required="">
+                      <label for="prenom">Image Article:</label>
+                      <input type="text" class="form-control" name="imageart" placeholder="Entrez votre prénom" required="">
                     </div>
                     <div class="form-group">
-                      <label for="email">E-mail:</label>
-                      <input type="text" class="form-control" name="umail" value="<?php echo $customer['mail']; ?>" required="">
+                      <label for="email">Contenu :</label>
+                      <input type="" class="form-control" name="contenuart" placeholder="Entrez votre contenu" required="">
                     </div>
-                    <div class="form-group">
-                      <input type="hidden" name="id" value="<?php echo $customer['id_users']; ?>">
-                      <input type="submit" name="update" class="btn btn-primary" style="float:right;" value="Update">
-                    </div>
+                   <!-- display data pour select catégorie , tags , banque d'images -->
+    
+                    <input type="submit" name="submit" class="btn btn-primary" style="float:right;" value="Envoyer">
                   </form>
                 </div>
                 </div>
             </div>
         </div>
     </div>
+           
 
-      <!-- chose_us_area start -->
-      <?php include('newchoose.php'); ?>
+
+
+    <!-- more_pro_btn_start  -->
+    <a href="project.php" class="more_pro_btn">Voir Tous nos projets</a>
+    <!-- more_pro_btn_end  -->
+
+
+    <!-- chose_us_area start -->
+    <?php include('newchoose.php'); ?>
     <!-- chose_us_area end -->
 
     <?php include('testimonial.php'); ?>
@@ -138,7 +141,6 @@
 
     <!-- contact_us_start  -->
     <?php include('footer.php'); ?>
-    <!-- footer_end  -->
 
     <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
@@ -172,7 +174,9 @@
 
     <script src="js/main.js"></script>
 
-      <!-- Modal -->
+
+
+  <!-- Modal -->
   <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">

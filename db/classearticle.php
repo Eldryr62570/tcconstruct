@@ -25,7 +25,7 @@
             $query="INSERT INTO article(titre_article,imgp_article,contenu_article,date_article,statut_article) VALUES('$atitre','$aimgp','$acontenu',NULL,0)";
             $sql = $this->con->query($query);
             if ($sql==true) {
-                header("Location:index.php?msg1=insert");
+                header("Location:panelarticle?msg1=insert");
             }else{
                 echo "Enregistration echoué !";
             }
@@ -33,7 +33,8 @@
      
         public function displayData()
         {
-            $query = "SELECT * FROM article";
+            $query = "SELECT * FROM article
+            ";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $data = array();
@@ -48,7 +49,9 @@
 
         public function displyaRecordById($id)
         {
-            $query = "SELECT * FROM article WHERE id_article = '$id'";
+            $query = "SELECT * FROM article 
+            INNER JOIN `categorie` ON article.id_article = categorie.id_categorie
+            WHERE id_article = '$id'";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -65,12 +68,12 @@
             $atitre = $this->con->real_escape_string($_POST['titrearticle']);
             $aimgp = $this->con->real_escape_string($_POST['imgparticle']);
             $acontenu = $this->con->real_escape_string($_POST['contenuarticle']);
-            $id = $this->con->real_escape_string($_POST['idarticle']);
+            $id = $this->con->real_escape_string($_POST['id']);
         if (!empty($id) && !empty($postData)) {
             $query = "UPDATE article SET titre_article = '$atitre', imgp_article = '$aimgp', contenu_article = '$acontenu' WHERE id_article = '$id'";
             $sql = $this->con->query($query);
             if ($sql==true) {
-                header("Location:index.php?msg2=update");
+                header("Location:panelarticle.php?msg2=update");
             }else{
                 echo "Votre demande de suppresion ne c'est pas executer!";
             }

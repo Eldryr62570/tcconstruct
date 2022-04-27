@@ -1,8 +1,23 @@
 <?php 
-// On appelle le fichier de connexion Mysql 
-require_once 'db/connectdb.php';
+ 
+include 'db/classearticle.php';
+$customerObj = new Articles();
 
-// On recupere l'article via GET id pour un article et ses images ( table image )
+if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
+    $deleteId = $_GET['deleteId'];
+    $customerObj->deleteRecord($deleteId);
+}
+
+if(isset($_GET['readId']) && !empty($_GET['readId'])) {
+    $readId = $_GET['readId'];
+    $customer = $customerObj->displyaRecordById($readId);
+  }
+
+
+/* if ($_SESSION['role'] == 2) {
+ */?>
+
+<!-- // On recupere l'article via GET id pour un article et ses images ( table image )
 
 $sqlarticle = "SELECT * FROM article
 LEFT JOIN `image` ON article.id_article = `image`.id_article
@@ -40,25 +55,25 @@ $sqlarticletag = "SELECT * FROM article
     $rowarticletags =$requetearticletag->fetchAll();
 
     /* page suivant precedant  */
-?>
+?> -->
 
 <div class="container mb80">
             <div class="vtimeline-block">
-                    <a href="#"><img src="img/article/<?php echo $rowarticle['imgp_article']?>" height="400" width="1100" alt="" class="img-fluid mb20"></a>
-                    <a href="#"><h3 class="postname"><?php echo $rowarticle['titre_article'] ; ?></h3></a>
+                    <a href="#"><img src="img/article/<?php echo $customer['imgp_article']?>" height="400" width="1100" alt="" class="img-fluid mb20"></a>
+                    <a href="#"><h3 class="postname"><?php echo $customer['titre_article'] ; ?></h3></a>
 
                      <ul class="post-meta list-inline">
                         <li class="list-inline-item">
                             <i class="fa fa-user-circle-o"></i> <a href="#">tc-construction</a>
                         </li>
                         <li class="list-inline-item">
-                            <i class="fa fa-calendar-o"></i><a href="#"><?php echo $rowarticle['date_article'];?></a>
+                            <i class="fa fa-calendar-o"></i><a href="#"><?php echo $customer['date_article'];?></a>
                         </li>
                         <li class="list-inline-item">
                             <i class="fa fa-folder"></i><a href="#"><?php echo $rowcatarticle['nom_categorie'];?></a>
                         </li>
 
-                        <?php foreach ($rowarticletags as $rowarticletag) { ?>
+                        <?php foreach ($customer as $custome) { ?>
                         <li class="list-inline-item">
                             <i class="fa fa-tags"></i><a href="#"><?php echo $rowarticletag['nom_tag'];?></a>
                         </li>
@@ -70,7 +85,7 @@ $sqlarticletag = "SELECT * FROM article
                     
                     <div class="descarticle">
                         <h4>Description<br></h4>
-                        <p><?php  echo $rowarticle['contenu_article'] ?></p>
+                        <p><?php  echo $customer['contenu_article'] ?></p>
                         <hr class="light">
                     </div>
 
