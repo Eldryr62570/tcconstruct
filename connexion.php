@@ -54,7 +54,9 @@
             <input type="submit" name="connexion" value="Connexion" class="boutton-connexion" />
             <?php if(isset($_GET["sucess"] )){?>
             <div class="text-success text-center">
-                Vous êtes bien inscrit, veuillez vous connecter 
+                Votre mot de passe à bien était changer.
+                <br/>
+                Veuillez vous connectez. 
             </div>
             <?php }?>
         </form><a href="mdp_oublie.php">mot de passe oublié ?</a>

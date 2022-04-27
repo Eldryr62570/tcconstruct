@@ -1,5 +1,15 @@
 <?php
-    require("db/readArticle.php");
+require_once "db/connectdb.php";
+if(isset($_GET['u']) && !empty($_GET['u'])){
+    $token = htmlspecialchars(base64_decode($_GET['u']));
+    $check = $dbh->prepare("SELECT * FROM password_recover WHERE token_user = ?");
+    $check->execute(array($token));
+    $row = $check->rowCount();
+    if($row == 0){
+        echo "Lien non valide";
+        die();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,18 +58,12 @@
         </div>
 
         <form method="post" action="db/traitement_changement_mdp.php">
+            <input type="hidden" name="token" value="<?php echo base64_decode(htmlspecialchars($_GET['u'])); ?>" />
             Nouveau mot de passe: <input type="password" name="mdp" />
             <br />
             Confirmer mot de passe: <input type="password" name="confirm_mdp" />
             <br />
             <input type="submit" name="Sauvegarder" value="enregistrer" class="boutton-connexion" />
-            <?php if(isset($_GET["sucess"] )){?>
-            <div class="text-success text-center">
-                Votre mot de passe à bien était changer.
-                <br/>
-                Veuillez vous connectez.
-            </div>
-            <?php }?>
         </form>
     </div>
 
