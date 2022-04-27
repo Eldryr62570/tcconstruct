@@ -1,7 +1,7 @@
 <?php
   
-  include 'db/classeusers.php';
-  $customerObj = new Users();
+  include 'db/classearticle.php';
+  $customerObj = new Articles();
 
   if(isset($_GET['editId']) && !empty($_GET['editId'])) {
     $editId = $_GET['editId'];
@@ -102,24 +102,24 @@
         <div class="col-md-5 mx-auto">
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h4 class="text-white">Update data chien</h4>
+                    <h4 class="text-white">Editer Article</h4>
                 </div>
                 <div class="card-body bg-light">
-                  <form action="editusers.php" method="POST">
+                  <form action="editarticles.php" method="POST">
                     <div class="form-group">
-                      <label for="nom">Nom:</label>
-                      <input type="text" class="form-control" name="unom" value="<?php echo $customer['nom']; ?>" required="">
+                      <label for="titre">Titre Article:</label>
+                      <input type="text" class="form-control" name="titrearticle" value="<?php echo $customer['titre_article']; ?>" required="">
                     </div>
                     <div class="form-group">
-                      <label for="prenom">Prénom:</label>
-                      <input type="text" class="form-control" name="uprenom" value="<?php echo $customer['prenom']; ?>" required="">
+                      <label for="image">Image Article:</label>
+                      <input type="text" class="form-control" name="imgparticle" value="<?php echo $customer['imgp_article']; ?>" required="">
                     </div>
                     <div class="form-group">
-                      <label for="email">E-mail:</label>
-                      <input type="text" class="form-control" name="umail" value="<?php echo $customer['mail']; ?>" required="">
+                      <label for="contenu">Contenu Article:</label>
+                      <input type="text" class="form-control" name="contenuarticle" value="<?php echo $customer['contenu_article']=substr($customer['contenu_article'],0,100); echo $customer['contenu_article']; ?>" required="">
                     </div>
                     <div class="form-group">
-                      <input type="hidden" name="id" value="<?php echo $customer['id_users']; ?>">
+                      <input type="hidden" name="id" value="<?php echo $customer['id_article']; ?>">
                       <input type="submit" name="update" class="btn btn-primary" style="float:right;" value="Update">
                     </div>
                   </form>

@@ -1,3 +1,4 @@
+
 <?php
 
  
@@ -9,8 +10,9 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
     $customerObj->deleteRecord($deleteId);
 }
 
-/* if ($_SESSION['role'] == 2) {
- */?>
+
+ if ($_SESSION['role'] == 2) {
+?>
 
 
 <!DOCTYPE html>
@@ -92,8 +94,8 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
         }
         ?>
   <h2>Table data Utilisateurs</h2>
-                    <div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Ajouter utilisateur</span></a>
+            <div class="col-sm-6">
+						<a href="addusers.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter utilisateur</span></a>
 					</div>  
   <table class="table" id="table">
     <thead>
@@ -117,7 +119,9 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
           <td><?php echo $customer['nom'] ?></td>
           <td><?php echo $customer['prenom'] ?></td>
           <td><?php echo $customer['mail'] ?></td>
-          <td><?php echo $customer['PASSWORD'] ?></td>
+          <td>						
+          <a href="#" class="btn btn-primary mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Changer Mot de passe</span></a>
+          </td>
           <td><?php echo $customer['nom_role'] ?></td>
           <td>
             <button class="btn btn-primary mr-2"><a href="editusers.php?editId=<?php echo $customer['id_users'] ?>">
@@ -133,44 +137,8 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
   </table>
 </div>
 
-<div id="addEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form method="POST" action="db/ajoutusers.php">
-				<div class="modal-header">						
-					<h4 class="modal-title">Ajouter un utilisateur</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-                <div class="erreur" name="msgnotif"></div>
-                    
-				<div class="modal-body">					
-                        <div class="form-group">
-                            <label>Nom</label>
-                            <input type="text" class="form-control" name="nomuser" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Prénom</label><br>
-                            <input name="prenomuser" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Mail</label>
-                            <input type="text" class="form-control" name="mailuser" required>
-                        </div>
-                        
-                        <div class="form-group">
-                                 <label>Rôle</label>
-                                <input type="text" class="form-control" name="tagsarticle" required>
-                        </div>
 
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-success" value="Add" name="adduser">
-                        </div>
-               </div>
-			</form>
-		</div>
-	</div>
-</div>
+
 
 
 <!-- Delete Modal HTML -->
@@ -195,6 +163,10 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
 	</div>
 </div>
 
+    <?php include('newchoose.php'); ?>
+    <!-- chose_us_area end -->
+
+    <?php include('testimonial.php'); ?>
 
 
 
@@ -279,6 +251,12 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
 
     </body>
 </html>
+
+<?php }
+ else {
+  header ('location: index.php');
+}
+?>
 
 
 
