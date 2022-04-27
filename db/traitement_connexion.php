@@ -34,16 +34,21 @@ require "connectdb.php";
                                 if (!password_verify($_POST["mdp"], $membres["PASSWORD"])) {
                                     echo "Désolé cette adresse mail et/ou le mot de pass n'existe pas.";
                                 }
-
-                                
                                 else {
                                     $_SESSION["membres"] = [
                                     "id" => $membres["id_users"],
                                     "nom" => $membres["nom"],
                                     "prenom" => $membres["prenom"],
+                                    "role" => $membres['id_role'],
                                     "mail" => $membres["mail"]
-                                ];                            
-                                header("location: ../index.php");
+                                ];     
+                                if ($_SESSION['membres']['role'] == 2) {                
+                                header("location: ../homeadmin.php");
+                                }
+                                else
+                                { 
+                                header ("location: ../index.php"); 
+                                }
 
                              
                                     

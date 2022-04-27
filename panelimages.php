@@ -1,10 +1,9 @@
 <?php
-/* session_start();
+session_start();
 require_once('db/connectdb.php');
 
 
-/* if ($_SESSION['role'] == 2) { */
-
+if ($_SESSION['membres']['role'] == 2) {
 ?>
 
 
@@ -427,4 +426,5 @@ require_once('db/connectdb.php');
 
     </body>
 </html>
+<?php }else header('location:index.php');   ?> 
 

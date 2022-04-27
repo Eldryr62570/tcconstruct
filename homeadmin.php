@@ -1,10 +1,7 @@
 <?php 
-/* session_start();
-if(!isset($_SESSION['login'])) {
-    header('location: index.php');    
-}
-if ($_SESSION['role'] == 2) {
- */
+session_start();
+
+if ($_SESSION['membres']['role'] == 2) { 
 ?>
 
 
@@ -170,4 +167,5 @@ if ($_SESSION['role'] == 2) {
 </body>
 
 </html>
+<?php }else header('location:index.php');   ?> 
 

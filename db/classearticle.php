@@ -17,17 +17,17 @@
             }
         }
        
-        public function insertData($post)
+        public function insertDataArt($post)
         {
-            $atitre = $this->con->real_escape_string($_POST['titrearticle']);
-            $aimgp = $this->con->real_escape_string($_POST['imgparticle']);
-            $acontenu = $this->con->real_escape_string($_POST['contenuarticle']);
-            $query="INSERT INTO article(titre_article,imgp_article,contenu_article,date_article,statut_article) VALUES('$atitre','$aimgp','$acontenu',NULL,0)";
+            $atitre = $this->con->real_escape_string($_POST['titreart']);
+            $aimgp = $this->con->real_escape_string($_POST['imgart']);
+            $acontenu = $this->con->real_escape_string($_POST['contenuart']);
+            $query="INSERT INTO `article`(`titre_article`, `imgp_article`, `contenu_article`, `date_article`, `statut_article`, `id_categorie`) VALUES (NULL,'$atitre','$aimgp','$acontenu',NULL,1,NULL)";
             $sql = $this->con->query($query);
             if ($sql==true) {
-                header("Location:panelarticle?msg1=insert");
+                header("Location: panelarticle?msg1=insert");
             }else{
-                echo "Enregistration echoué !";
+                header("Location: addarticles?msg4=error");
             }
         }
      
@@ -51,7 +51,10 @@
         {
             $query = "SELECT * FROM article 
             INNER JOIN `categorie` ON article.id_article = categorie.id_categorie
-            WHERE id_article = '$id'";
+            INNER JOIN possede ON article.id_article = possede.id_article
+            INNER JOIN tag ON tag.id_tag = possede.id_tag
+            LEFT JOIN `image` ON article.id_article = `image`.id_article
+            WHERE article.id_article = '$id'";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -61,8 +64,7 @@
             }
         }
 
-        
- 
+         
         public function updateRecord($postData)
         {
             $atitre = $this->con->real_escape_string($_POST['titrearticle']);

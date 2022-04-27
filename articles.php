@@ -13,49 +13,8 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
     $customer = $customerObj->displyaRecordById($readId);
   }
 
+?>
 
-/* if ($_SESSION['role'] == 2) {
- */?>
-
-<!-- // On recupere l'article via GET id pour un article et ses images ( table image )
-
-$sqlarticle = "SELECT * FROM article
-LEFT JOIN `image` ON article.id_article = `image`.id_article
-WHERE article.id_article=".$_GET['id_article']."";
-$requetearticle = $dbh ->prepare($sqlarticle);
-$requetearticle ->execute(); 
-$rowarticle =$requetearticle->fetch();
-
-/* afficher all images post */
-
-$sqlimages = "SELECT * FROM article 
-LEFT JOIN `image` ON article.id_article = `image`.id_article
-WHERE article.id_article=".$_GET['id_article']."";
-$requeteimages = $dbh ->prepare($sqlimages);
-$requeteimages ->execute(); 
-$rowimages =$requeteimages->fetchAll();
-
-/* jointure table categorie / article */
-
-$sqlcatearticle = "SELECT * FROM article 
-LEFT JOIN `categorie` ON article.id_article = categorie.id_categorie
-WHERE article.id_article=".$_GET['id_article']."";
-$requetecatarticle = $dbh ->prepare($sqlcatearticle);
-$requetecatarticle->execute(); 
-$rowcatarticle =$requetecatarticle->fetch();
-
-/* jointure table article / possede / tags */
-
-$sqlarticletag = "SELECT * FROM article
-    INNER JOIN possede ON article.id_article = possede.id_article
-    INNER JOIN tag ON tag.id_tag = possede.id_tag
-    WHERE article.id_article =".$_GET['id_article']."";
-    $requetearticletag = $dbh ->prepare($sqlarticletag);
-    $requetearticletag->execute(); 
-    $rowarticletags =$requetearticletag->fetchAll();
-
-    /* page suivant precedant  */
-?> -->
 
 <div class="container mb80">
             <div class="vtimeline-block">
@@ -70,12 +29,12 @@ $sqlarticletag = "SELECT * FROM article
                             <i class="fa fa-calendar-o"></i><a href="#"><?php echo $customer['date_article'];?></a>
                         </li>
                         <li class="list-inline-item">
-                            <i class="fa fa-folder"></i><a href="#"><?php echo $rowcatarticle['nom_categorie'];?></a>
+                            <i class="fa fa-folder"></i><a href="#"><?php echo $customer['nom_categorie'];?></a>
                         </li>
 
                         <?php foreach ($customer as $custome) { ?>
                         <li class="list-inline-item">
-                            <i class="fa fa-tags"></i><a href="#"><?php echo $rowarticletag['nom_tag'];?></a>
+                            <i class="fa fa-tags"></i><a href="#"><?php echo $custome['nom_tag'];?></a>
                         </li>
                         <?php } ?>
                         
@@ -104,10 +63,10 @@ $sqlarticletag = "SELECT * FROM article
 
                     
                 <div class="presimg"><h4><i class="fa fa-image"></i>Photos</h4></div>
-                <?php foreach ($rowimages as $rowimage) { ?>
+                <?php foreach ($customer as $custome) { ?>
                 <div class="gallery">
-                    <a target="_blank" href="img/article/<?php echo $rowimage['titre_image'];?>.jpg">
-                        <img src="img/article/<?php echo $rowimage['titre_image'];?>.jpg" alt="Mountains" width="590" height="340">
+                    <a target="_blank" href="img/article/<?php echo $customer['titre_image'];?>.jpg">
+                        <img src="img/article/<?php echo $customer['titre_image'];?>.jpg" alt="Mountains" width="590" height="340">
                     </a>
                 </div>
 

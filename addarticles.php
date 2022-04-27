@@ -3,8 +3,8 @@
   include 'db/classearticle.php';
   $customerObj = new Articles();
 
-  if(isset($_POST['submit'])) {
-    $customerObj->insertData($_POST);
+  if(isset($_POST['envoyer'])) {
+    $customerObj->insertDataArt($_POST);
   }
 
 ?>
@@ -101,22 +101,81 @@
                     <h4 class="text-white">Ajouter un Article</h4>
                 </div>
                 <div class="card-body bg-light">
-                  <form action="addusers.php" method="POST">
+                  <form action="addarticles.php" method="POST">
                     <div class="form-group">
                       <label for="prenom">Titre Article:</label>
                       <input type="text" class="form-control" name="titreart" placeholder="Entrez votre titre" required="">
                     </div>
                     <div class="form-group">
                       <label for="prenom">Image Article:</label>
-                      <input type="text" class="form-control" name="imageart" placeholder="Entrez votre prénom" required="">
+                      <input type="text" class="form-control" name="imgart" placeholder="Entrez votre prénom" required="">
                     </div>
                     <div class="form-group">
                       <label for="email">Contenu :</label>
-                      <input type="" class="form-control" name="contenuart" placeholder="Entrez votre contenu" required="">
+                      <input type="text" class="form-control" name="contenuart" placeholder="Entrez votre contenu" required="">
                     </div>
                    <!-- display data pour select catégorie , tags , banque d'images -->
+
+                   <div class="form-group">
+                            <label> Choisir catégorie</label>
+                            <?php 
+                            require "db/affiche_crudarticle.php";
+                            ?>
+                
+                
+                                <select name="categoriearticle" id="categoriearticle">
+                                
+                                    <option value="">Catégorie  </option>
+                                    <?php while($ligne = $resultatcrudarticles->fetch()) {
+                                    ?>
+                                    <option value="categorie"><?php echo $ligne['nom_categorie']; ?></option>
+                                    <?php } ?>
+                                </select>
+                                 
+
+                        </div>	
+
+
+                        <div class="form-group">
+                            <label> Choisir Tags</label>
+                            <?php 
+                            require "db/affiche_crudarticle.php";
+                            ?>
+                
+                
+                                <select name="categoriearticle" id="categoriearticle">
+                                
+                                    <option value="">Catégorie  </option>
+                                    <?php while($ligne = $resultatcrudarticles->fetchAll()) {
+                                    ?>
+                                    <option value="categorie"><?php echo $ligne['nom_categorie']; ?></option>
+                                    <?php } ?>
+                                </select>
+                                 
+
+                        </div>	
+
+
+                        <div class="form-group">
+                            <label> Choisir Images</label>
+                            <?php 
+                            require "db/affiche_crudarticle.php";
+                            ?>
+                
+                
+                                <select name="categoriearticle" id="categoriearticle">
+                                
+                                    <option value="">Images  </option>
+                                    <?php while($ligne = $resultatcrudarticles->fetch()) {
+                                    ?>
+                                    <option value="categorie"><?php echo $ligne['nom_categorie']; ?></option>
+                                    <?php } ?>
+                                </select>
+                                 
+
+                        </div>	
     
-                    <input type="submit" name="submit" class="btn btn-primary" style="float:right;" value="Envoyer">
+                    <input type="submit" name="envoyer" class="btn btn-primary" style="float:right;" value="Envoyer">
                   </form>
                 </div>
                 </div>

@@ -1,6 +1,5 @@
-
 <?php
-
+session_start();
  
 include 'db/classeusers.php';
 $customerObj = new Users();
@@ -11,7 +10,7 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
 }
 
 
- if ($_SESSION['role'] == 2) {
+ if ($_SESSION['membres']['role'] == 2) {
 ?>
 
 
@@ -252,11 +251,8 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
     </body>
 </html>
 
-<?php }
- else {
-  header ('location: index.php');
-}
-?>
+<?php }else header('location:index.php');   ?> 
+
 
 
 

@@ -1,6 +1,5 @@
-
 <?php
-
+session_start();
  
 include 'db/classearticle.php';
 $customerObj = new Articles();
@@ -16,8 +15,7 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
   }
 
 
-/* if ($_SESSION['role'] == 2) {
- */?>
+  if ($_SESSION['membres']['role'] == 2) { ?>
 
 
 <!DOCTYPE html>
@@ -262,6 +260,7 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
 
     </body>
 </html>
+<?php }else header('location:index.php');   ?> 
 
 
 
