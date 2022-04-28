@@ -1,4 +1,5 @@
 <?php
+
 require("db/readArticle.php");
 include 'db/classearticle.php';
 $customerObj = new Articles();
@@ -73,6 +74,7 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
 
 
     <!-- articles -->
+   
     <div class="container mb80">
             <div class="vtimeline-block">
                     <a href="#"><img src="img/article/<?php echo $customer['imgp_article']?>" height="400" width="1100" alt="" class="img-fluid mb20"></a>

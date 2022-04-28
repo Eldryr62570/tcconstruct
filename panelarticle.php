@@ -15,6 +15,8 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
   }
 
 
+
+
   if ($_SESSION['membres']['role'] == 2) { ?>
 
 
@@ -96,60 +98,79 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
                 </div>";
         }
         ?>
-  <h2>Table data Utilisateurs</h2>
-            <div class="col-sm-6">
-						<a href="addarticles.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter Article</span></a>
-					</div>  
-  <table class="table" id="table">
-    <thead>
-      <tr>
-        <th>Id Article</th>
-        <th>Titre Article</th>
-        <th>Image Article</th>
-        <th>Contenu Article</th>
-        <th>Date Article</th>
-        <th>Statut</th>
-        <th>Catégorie</th>
-        <th>Images</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-        <?php 
-          $customers = $customerObj->displayData(); 
-          foreach ($customers as $customer) {
-        ?>
-        <tr>
-          <td><?php echo $customer['id_article'] ?></td>
-          <td><?php echo $customer['titre_article'] ?></td>
-          <td><?php echo $customer['imgp_article'] ?></td>
-          <td><?php echo $customer['contenu_article']=substr($customer['contenu_article'],0,100); echo $customer['contenu_article']; ?></td>
-          <td><?php echo $customer['date_article'] ?></td>
-          <td>
-            <a href="#editStatutModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Statut">autorenew
-            </i></a>
-            </td>
-          <td><?php echo $customer['id_categorie'] ?></td>
-          <th>
-          <a href="#" class="btn btn-primary mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Voir les images</span></a>
-          <a href="#" class="btn btn-success mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Ajouter les images</span></a>
-          </th>
-          <td>
-            <button class="btn btn-primary"><a href="editarticles.php?editId=<?php echo $customer['id_article'] ?>">
-              <i class="fa fa-pencil text-white" aria-hidden="true"></i></a></button>
-            <button class="btn btn-danger"><a href="panelarticles.php?deleteId=<?php echo $customer['id_article'] ?>" onclick="confirm('Voulez vous vraiment supprimer cette demande')">
-              <i class="fa fa-trash text-white" aria-hidden="true"></i>
-            </a></button>
-            <button class="btn btn-warning mr-2"><a href="actualite_article.php?readId=<?php echo $customer['id_article'] ?>" onclick="confirm('Voulez vous voir la page article')">
-              <i class="fa fa-eye text-white" aria-hidden="true"></i>
-            </a></button>
-          </td>
-          <?php } ?>
-        </tr>
-      
-    </tbody>
-  </table>
-</div>
+  
+    
+
+  <div class="container-xxl">
+	  <div class="table-responsive">
+	  	<div class="table-wrapper">
+              <div class="table-title">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h2>Table données <b>Articles</b></h2>
+                  </div>
+                    <div  class="success" name="msgsucces"></div>
+                  <div class="col-sm-6">
+                  <a href="addarticles.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter Article</span></a>
+                  <li class="ins"><a class="btn btn-black " href="homeadmin.php"> <i class="fa fa-sign-out"></i> Accueil</a> 
+                  </div>
+                </div>
+              </div>
+			      <table class="table table-striped table-hover" id="mytable">
+                <thead>
+                  <tr>
+                    <th>Id Article</th>
+                    <th>Titre Article</th>
+                    <th>Image Article</th>
+                    <th>Contenu Article</th>
+                    <th>Date Article</th>
+                    <th>Catégorie</th>
+                    <th>Images</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                    $customers = $customerObj->displayData(); 
+                    foreach ($customers as $customer) {
+                  ?>
+                  <tr>
+                    <td><?php echo $customer['id_article'] ?></td>
+                    <td><?php echo $customer['titre_article'] ?></td>
+                    <td><?php echo $customer['imgp_article'] ?></td>
+                    <td><?php echo $customer['contenu_article']=substr($customer['contenu_article'],0,60); echo $customer['contenu_article']; ?></td>
+                    <td><?php echo $customer['date_article'] ?></td>
+                    
+                    <td>
+                   
+                    <a href="#" class="btn btn-success mr-2 text-white"><i class="material-icons">&#xE147;</i> <span> <?php echo $customer['nom_categorie']; ?></span></a>
+                    </td>
+                    <th>
+                    <div class="col-sm-6">
+                    <a href="#" class="btn btn-primary mr-2 text-white"><i class="fa fa-eye text-white"></i> <span>Voir</span></a>
+                    <a href="#" class="btn btn-success mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Ajouter</span></a>
+                    </div>
+                    </th>
+                    <td>
+                      <button class="btn btn-primary"><a href="editarticles.php?editId=<?php echo $customer['id_article'] ?>">
+                        <i class="fa fa-pencil text-white" aria-hidden="true"></i></a></button>
+                      <button class="btn btn-danger"><a href="panelarticles.php?deleteId=<?php echo $customer['id_article'] ?>" onclick="confirm('Voulez vous vraiment supprimer cette demande')">
+                        <i class="fa fa-trash text-white" aria-hidden="true"></i>
+                      </a></button>
+                      <button class="btn btn-warning mr-2"><a href="actualite_article.php?readId=<?php echo $customer['id_article'] ?>" onclick="confirm('Voulez vous voir la page article')">
+                        <i class="fa fa-eye text-white" aria-hidden="true"></i>
+                      </a></button>
+                    </td>
+                    <?php } ?>
+                  </tr>
+                
+                  </tbody>
+			          </table>
+			
+            </div>
+          </div>        
+        </div>
+      </div>
 
 
 

@@ -41,6 +41,7 @@ require "connectdb.php";
                                     "prenom" => $membres["prenom"],
                                     "role" => $membres['id_role'],
                                     "mail" => $membres["mail"]
+
                                 ];     
                                 if ($_SESSION['membres']['role'] == 2) {                
                                 header("location: ../homeadmin.php");

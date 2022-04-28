@@ -36,7 +36,6 @@ if ($_SESSION['membres']['role'] == 2) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script rel="stylesheet" src="https://cdn.datatables.net/v/bs4/jqc-1.12.4/dt-1.11.5/datatables.min.js"></script>
 
 
   
@@ -132,18 +131,7 @@ if ($_SESSION['membres']['role'] == 2) {
 						 
 				</tbody>
 			</table>
-			<div class="clearfix">
-				<div class="hint-text">Affichage <b>5</b> sur <b>25</b> pages</div>
-				<ul class="pagination">
-					<li class="page-item disabled"><a href="#">Previous</a></li>
-					<li class="page-item active"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Next</a></li>
-				</ul>
-			</div>
+			
 		</div>
 	</div>        
 </div>
@@ -349,11 +337,7 @@ if ($_SESSION['membres']['role'] == 2) {
 
 
  <!-- JS here -->
-    <script type="text/javascript">
-        $(document).ready( function () {
-        $('#mytable').DataTable();
-        } );
-    </script>
+    
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -384,6 +368,15 @@ if ($_SESSION['membres']['role'] == 2) {
 
 
     <script src="js/main.js"></script>
+
+    <script rel="stylesheet" src="https://cdn.datatables.net/v/bs4/jqc-1.12.4/dt-1.11.5/datatables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+        $('#mytable').DataTable();
+        } );
+    </script>
+
 
 
 

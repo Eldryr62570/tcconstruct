@@ -33,8 +33,9 @@
      
         public function displayData()
         {
-            $query = "SELECT * FROM article
-            ";
+            $query = "SELECT * FROM article 
+            INNER JOIN `categorie` ON article.id_categorie = categorie.id_categorie
+            WHERE article.id_article";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $data = array();
@@ -51,7 +52,7 @@
         public function displyaRecordById($id)
         {
             $query = "SELECT * FROM article 
-            LEFT JOIN `categorie` ON article.id_article = categorie.id_categorie
+            INNER JOIN `categorie` ON article.id_categorie = categorie.id_categorie
             INNER JOIN possede ON article.id_article = possede.id_article
             LEFT JOIN tag ON tag.id_tag = possede.id_tag
             LEFT JOIN `image` ON article.id_article = `image`.id_article

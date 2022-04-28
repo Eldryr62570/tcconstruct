@@ -92,13 +92,26 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
                 </div>";
         }
         ?>
-              
-  <table class="table" id="tabledata">
-    <thead>
-    <h2 class="text-center">Table data Utilisateurs</h2>
-          <div class="col-md-8">
-						<a href="addusers.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter utilisateur</span></a>
-					</div>
+
+
+<div class="container-xl">
+	<div class="table-responsive">
+		<div class="table-wrapper">
+              <div class="table-title">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h2>Table données <b>Utilisateurs</b></h2>
+                  </div>
+                    <div  class="success" name="msgsucces"></div>
+                  <div class="col-sm-6">
+                  <a href="addusers.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter utilisateur</span></a>
+                  <li class="ins"><a class="btn btn-black " href="homeadmin.php"> <i class="fa fa-sign-out"></i> Accueil</a> 
+                  </div>
+                </div>
+              </div>
+			<table class="table table-striped table-hover" id="mytable">
+			<thead>
+      <!-- attribut des tables header du tableaux -->			
       <tr>
         <th>Id Utilisateur</th>
         <th>Nom</th>
@@ -109,32 +122,36 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
         <th>Action</th>
       </tr>
     </thead>
-    <tbody>
-        <?php 
-          $customers = $customerObj->displayData(); 
-          foreach ($customers as $customer) {
-        ?>
-        <tr>
-          <td><?php echo $customer['id_users'] ?></td>
-          <td><?php echo $customer['nom'] ?></td>
-          <td><?php echo $customer['prenom'] ?></td>
-          <td><?php echo $customer['mail'] ?></td>
-          <td>						
-          <a href="#" class="btn btn-primary mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Changer Mot de passe</span></a>
-          </td>
-          <td><?php echo $customer['nom_role'] ?></td>
-          <td>
-            <button class="btn btn-primary mr-2"><a href="editusers.php?editId=<?php echo $customer['id_users'] ?>">
-              <i class="fa fa-pencil text-white" aria-hidden="true"></i></a></button>
-            <button class="btn btn-danger"><a href="panelusers.php?deleteId=<?php echo $customer['id_users'] ?>" onclick="confirm('Voulez vous vraiment supprimer cette demande')">
-              <i class="fa fa-trash text-white" aria-hidden="true"></i>
-            </a></button>
-          </td>
-          <?php } ?>
-        </tr>
-      
-    </tbody>
-  </table>
+        <tbody>
+          <?php 
+            $customers = $customerObj->displayData(); 
+            foreach ($customers as $customer) {
+          ?>
+          <tr>
+            <td><?php echo $customer['id_users'] ?></td>
+            <td><?php echo $customer['nom'] ?></td>
+            <td><?php echo $customer['prenom'] ?></td>
+            <td><?php echo $customer['mail'] ?></td>
+            <td>						
+            <a href="#" class="btn btn-primary mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Changer Mot de passe</span></a>
+            </td>
+            <td><?php echo $customer['nom_role'] ?></td>
+            <td>
+              <button class="btn btn-primary mr-2"><a href="editusers.php?editId=<?php echo $customer['id_users'] ?>">
+                <i class="fa fa-pencil text-white" aria-hidden="true"></i></a></button>
+              <button class="btn btn-danger"><a href="panelusers.php?deleteId=<?php echo $customer['id_users'] ?>" onclick="confirm('Voulez vous vraiment supprimer cette demande')">
+                <i class="fa fa-trash text-white" aria-hidden="true"></i>
+              </a></button>
+            </td>
+            <?php } ?>
+          </tr>
+        
+          </tbody>
+			</table>
+			
+		  </div>
+    </div>        
+  </div>
 </div>
 
 

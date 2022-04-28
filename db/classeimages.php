@@ -32,7 +32,8 @@
      
         public function displayDataImg()
         {
-            $query = "SELECT * FROM `image`
+            $query = "SELECT * FROM `image` 
+            WHERE id_article
             ";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
@@ -45,6 +46,18 @@
              echo "No found records";
             }
         }
+
+
+        public function read() {
+ 
+            $sql = $this->con->prepare("SELECT * FROM `image` WHERE id_article"); 
+            $sql->execute();
+            $data= $sql->fetch(PDO::FETCH_OBJ);
+                     return $data;
+
+        }
+   
+        
         
 
         public function displyaRecordByIdImg($idimg)

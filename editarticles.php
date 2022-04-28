@@ -116,7 +116,8 @@
                     </div>
                     <div class="form-group">
                       <label for="contenu">Contenu Article:</label>
-                      <input type="text" class="form-control" name="contenuarticle" value="<?php echo $customer['contenu_article']=substr($customer['contenu_article'],0,100); echo $customer['contenu_article']; ?>" required="">
+                      <textarea name="contenuarticle" class="form-control" rows="0" cols="220" value="<?php $customer['contenu_article'];?>" require><?php echo $customer['contenu_article'];?></textarea> 
+
                     </div>
                     <div class="form-group">
                       <input type="hidden" name="id" value="<?php echo $customer['id_article']; ?>">

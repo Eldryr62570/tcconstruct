@@ -62,6 +62,15 @@ if ($_SESSION['membres']['role'] == 2) {
         </div>
     </div>
     <div class="container">
+
+             <div class="table-title">
+               
+                  <div class="col-sm-6">
+                    <h3 class="textadmin">Panels <b>Administration</b></h3>
+                  </div>
+                    <div  class="success" name="msgsucces"></div>
+            </div>
+              
             <div class="gallerybig">
               <!-- get id panel -->
                     <a href="panelusers.php">
