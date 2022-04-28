@@ -71,7 +71,7 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="crudfront">
         <?php
         if (isset($_GET['msg1']) == "insert") {
         echo "<div class='alert alert-success alert-dismissible'>
@@ -92,12 +92,13 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
                 </div>";
         }
         ?>
-  <h2>Table data Utilisateurs</h2>
-            <div class="col-sm-6">
-						<a href="addusers.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter utilisateur</span></a>
-					</div>  
-  <table class="table" id="table">
+              
+  <table class="table" id="tabledata">
     <thead>
+    <h2 class="text-center">Table data Utilisateurs</h2>
+          <div class="col-md-8">
+						<a href="addusers.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter utilisateur</span></a>
+					</div>
       <tr>
         <th>Id Utilisateur</th>
         <th>Nom</th>
@@ -155,7 +156,7 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
+				  <input type="submit" class="btn btn-danger" value="Delete">
 				</div>
 			</form>
 		</div>

@@ -1,5 +1,5 @@
 <?php
-    class Articles
+    class Categories
     {
         private $servername = "localhost";
         private $username   = "root";
@@ -17,12 +17,10 @@
             }
         }
        
-        public function insertDataArt($post)
+        public function insertDataCat($post)
         {
-            $atitre = $this->con->real_escape_string($_POST['titreart']);
-            $aimgp = $this->con->real_escape_string($_POST['imgart']);
-            $acontenu = $this->con->real_escape_string($_POST['contenuart']);
-            $query="INSERT INTO `article`(`titre_article`, `imgp_article`, `contenu_article`, `date_article`, `statut_article`, `id_categorie`) VALUES (NULL,'$atitre','$aimgp','$acontenu',NULL,1,NULL)";
+            $nomcat = $this->con->real_escape_string($_POST['titreart']);
+            $query="INSERT INTO `categorie`(`nom_categorie`) VALUES (NULL,'$nomcat')";
             $sql = $this->con->query($query);
             if ($sql==true) {
                 header("Location: panelarticle?msg1=insert");
@@ -31,9 +29,9 @@
             }
         }
      
-        public function displayData()
+        public function displayDataCat()
         {
-            $query = "SELECT * FROM article
+            $query = "SELECT * FROM categorie
             ";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
@@ -48,14 +46,10 @@
         }
         
 
-        public function displyaRecordById($id)
+        public function displyaRecordByIdCat($idcat)
         {
-            $query = "SELECT * FROM article 
-            LEFT JOIN `categorie` ON article.id_article = categorie.id_categorie
-            INNER JOIN possede ON article.id_article = possede.id_article
-            LEFT JOIN tag ON tag.id_tag = possede.id_tag
-            LEFT JOIN `image` ON article.id_article = `image`.id_article
-            WHERE article.id_article = '$id'";
+            $query = "SELECT * FROM categorie
+            WHERE categorie.id_categorie = '$idcat'";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -68,15 +62,13 @@
          
         public function updateRecord($postData)
         {
-            $atitre = $this->con->real_escape_string($_POST['titrearticle']);
-            $aimgp = $this->con->real_escape_string($_POST['imgparticle']);
-            $acontenu = $this->con->real_escape_string($_POST['contenuarticle']);
-            $id = $this->con->real_escape_string($_POST['id']);
+            $nomcategorie = $this->con->real_escape_string($_POST['nomcategorie']);
+            $idcat = $this->con->real_escape_string($_POST['id_categorie']);
         if (!empty($id) && !empty($postData)) {
-            $query = "UPDATE article SET titre_article = '$atitre', imgp_article = '$aimgp', contenu_article = '$acontenu' WHERE id_article = '$id'";
+            $query = "UPDATE categorie SET nom_categorie = '$nomcategorie' WHERE id_categorie = '$idcat'";
             $sql = $this->con->query($query);
             if ($sql==true) {
-                header("Location:panelarticle.php?msg2=update");
+                header("Location:panelcategorie.php?msg2=update");
             }else{
                 echo "Votre demande de suppresion ne c'est pas executer!";
             }
@@ -84,9 +76,9 @@
             
         }
 
-        public function deleteRecord($id)
+        public function deleteRecord($idcat)
         {
-            $query = "DELETE FROM article WHERE id_article = '$id'";
+            $query = "DELETE FROM categorie WHERE id_categorie = '$idcat'";
             $sql = $this->con->query($query);
         if ($sql==true) {
             header("Location:index.php?msg3=delete");

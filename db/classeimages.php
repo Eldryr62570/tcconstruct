@@ -1,5 +1,5 @@
 <?php
-    class Articles
+    class Images
     {
         private $servername = "localhost";
         private $username   = "root";
@@ -17,12 +17,11 @@
             }
         }
        
-        public function insertDataArt($post)
+        public function insertDataImg($post)
         {
-            $atitre = $this->con->real_escape_string($_POST['titreart']);
-            $aimgp = $this->con->real_escape_string($_POST['imgart']);
-            $acontenu = $this->con->real_escape_string($_POST['contenuart']);
-            $query="INSERT INTO `article`(`titre_article`, `imgp_article`, `contenu_article`, `date_article`, `statut_article`, `id_categorie`) VALUES (NULL,'$atitre','$aimgp','$acontenu',NULL,1,NULL)";
+            $filename = $this->con->real_escape_string($_POST['file_name']);
+            $titreimg = $this->con->real_escape_string($_POST['titre_image']);
+            $query="INSERT INTO `image`(`file_name`, `titre_image`, `uploaded_on`, `id_article`) VALUES (NULL,'$filename','$titreimg',NULL,?)";
             $sql = $this->con->query($query);
             if ($sql==true) {
                 header("Location: panelarticle?msg1=insert");
@@ -31,9 +30,9 @@
             }
         }
      
-        public function displayData()
+        public function displayDataImg()
         {
-            $query = "SELECT * FROM article
+            $query = "SELECT * FROM `image`
             ";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
@@ -48,14 +47,10 @@
         }
         
 
-        public function displyaRecordById($id)
+        public function displyaRecordByIdImg($idimg)
         {
-            $query = "SELECT * FROM article 
-            LEFT JOIN `categorie` ON article.id_article = categorie.id_categorie
-            INNER JOIN possede ON article.id_article = possede.id_article
-            LEFT JOIN tag ON tag.id_tag = possede.id_tag
-            LEFT JOIN `image` ON article.id_article = `image`.id_article
-            WHERE article.id_article = '$id'";
+            $query = "SELECT * FROM `image` 
+            WHERE image.id_image = '$idimg'";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -68,15 +63,14 @@
          
         public function updateRecord($postData)
         {
-            $atitre = $this->con->real_escape_string($_POST['titrearticle']);
-            $aimgp = $this->con->real_escape_string($_POST['imgparticle']);
-            $acontenu = $this->con->real_escape_string($_POST['contenuarticle']);
-            $id = $this->con->real_escape_string($_POST['id']);
+            $filenameu = $this->con->real_escape_string($_POST['file_nameu']);
+            $titreimgu = $this->con->real_escape_string($_POST['titre_imageu']);
+            $idimg = $this->con->real_escape_string($_POST['id_image']);
         if (!empty($id) && !empty($postData)) {
-            $query = "UPDATE article SET titre_article = '$atitre', imgp_article = '$aimgp', contenu_article = '$acontenu' WHERE id_article = '$id'";
+            $query = "UPDATE `image` SET file_name = '$filenameu', titre_image = '$titreimgu' WHERE id_image = '$idimg'";
             $sql = $this->con->query($query);
             if ($sql==true) {
-                header("Location:panelarticle.php?msg2=update");
+                header("Location:panelimages.php?msg2=update");
             }else{
                 echo "Votre demande de suppresion ne c'est pas executer!";
             }
@@ -84,12 +78,12 @@
             
         }
 
-        public function deleteRecord($id)
+        public function deleteRecord($idimage)
         {
-            $query = "DELETE FROM article WHERE id_article = '$id'";
+            $query = "DELETE FROM `image` WHERE id_image = '$idimage'";
             $sql = $this->con->query($query);
         if ($sql==true) {
-            header("Location:index.php?msg3=delete");
+            header("Location:panelimages.php?msg3=delete");
         }else{
             echo "Record does not delete try again";
             }

@@ -110,6 +110,7 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
         <th>Date Article</th>
         <th>Statut</th>
         <th>Catégorie</th>
+        <th>Images</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -129,6 +130,10 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
             </i></a>
             </td>
           <td><?php echo $customer['id_categorie'] ?></td>
+          <th>
+          <a href="#" class="btn btn-primary mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Voir les images</span></a>
+          <a href="#" class="btn btn-success mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Ajouter les images</span></a>
+          </th>
           <td>
             <button class="btn btn-primary"><a href="editarticles.php?editId=<?php echo $customer['id_article'] ?>">
               <i class="fa fa-pencil text-white" aria-hidden="true"></i></a></button>

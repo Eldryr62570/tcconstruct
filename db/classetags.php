@@ -1,5 +1,5 @@
 <?php
-    class Articles
+    class Tags
     {
         private $servername = "localhost";
         private $username   = "root";
@@ -19,21 +19,19 @@
        
         public function insertDataArt($post)
         {
-            $atitre = $this->con->real_escape_string($_POST['titreart']);
-            $aimgp = $this->con->real_escape_string($_POST['imgart']);
-            $acontenu = $this->con->real_escape_string($_POST['contenuart']);
-            $query="INSERT INTO `article`(`titre_article`, `imgp_article`, `contenu_article`, `date_article`, `statut_article`, `id_categorie`) VALUES (NULL,'$atitre','$aimgp','$acontenu',NULL,1,NULL)";
+            $nomtag = $this->con->real_escape_string($_POST['nomtag']);
+            $query="INSERT INTO `tag`(`nom_tag`) VALUES (NULL,'$nomtag')";
             $sql = $this->con->query($query);
             if ($sql==true) {
-                header("Location: panelarticle?msg1=insert");
+                header("Location: paneltags?msg1=insert");
             }else{
-                header("Location: addarticles?msg4=error");
+                header("Location: paneltags?msg4=error");
             }
         }
      
-        public function displayData()
+        public function displayDataTags()
         {
-            $query = "SELECT * FROM article
+            $query = "SELECT * FROM tag
             ";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
@@ -48,7 +46,7 @@
         }
         
 
-        public function displyaRecordById($id)
+        public function displyaRecordByIdTags($id)
         {
             $query = "SELECT * FROM article 
             LEFT JOIN `categorie` ON article.id_article = categorie.id_categorie
@@ -68,15 +66,13 @@
          
         public function updateRecord($postData)
         {
-            $atitre = $this->con->real_escape_string($_POST['titrearticle']);
-            $aimgp = $this->con->real_escape_string($_POST['imgparticle']);
-            $acontenu = $this->con->real_escape_string($_POST['contenuarticle']);
-            $id = $this->con->real_escape_string($_POST['id']);
+            $ntag = $this->con->real_escape_string($_POST['ntag']);
+            $idtag = $this->con->real_escape_string($_POST['id_tag']);
         if (!empty($id) && !empty($postData)) {
-            $query = "UPDATE article SET titre_article = '$atitre', imgp_article = '$aimgp', contenu_article = '$acontenu' WHERE id_article = '$id'";
+            $query = "UPDATE tag SET nom_tag = '$ntag' WHERE id_tag = '$idtag'";
             $sql = $this->con->query($query);
             if ($sql==true) {
-                header("Location:panelarticle.php?msg2=update");
+                header("Location:paneltags.php?msg2=update");
             }else{
                 echo "Votre demande de suppresion ne c'est pas executer!";
             }
@@ -84,9 +80,9 @@
             
         }
 
-        public function deleteRecord($id)
+        public function deleteRecord($idtag)
         {
-            $query = "DELETE FROM article WHERE id_article = '$id'";
+            $query = "DELETE FROM tag WHERE id_tag = '$idtag'";
             $sql = $this->con->query($query);
         if ($sql==true) {
             header("Location:index.php?msg3=delete");

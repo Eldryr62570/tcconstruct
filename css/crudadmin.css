@@ -60,6 +60,13 @@ ul li a{
          
         }
 
+		#crudfront {
+		padding: 100px 100px !important;
+		border: 1px solid;
+		
+	}
+	
+
 
 .table-responsive {
     margin: 100px 0;

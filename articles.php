@@ -60,17 +60,27 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
                         </div>
                         <hr class="light">
                     </div>
+                    <?php 
+                    require_once 'db/connectdb.php';
+                    $sqlimages = "SELECT * FROM article 
+                    LEFT JOIN `image` ON article.id_article = `image`.id_article
+                    WHERE article.id_article=".$_GET['readId']."";
+                    $requeteimages = $dbh ->prepare($sqlimages);
+                    $requeteimages ->execute(); 
+                    $rowimages =$requeteimages->fetchAll();
+
+                    ?>
 
                     
                 <div class="presimg"><h4><i class="fa fa-image"></i>Photos</h4></div>
-                <?php foreach ($customer as $custome) { ?>
+                <?php foreach ($rowimages as $rowimage) { ?>
                 <div class="gallery">
-                    <a target="_blank" href="img/article/<?php echo $customer['titre_image'];?>.jpg">
-                        <img src="img/article/<?php echo $customer['titre_image'];?>.jpg" alt="Mountains" width="590" height="340">
+                    <a target="_blank" href="img/article/<?php echo $rowimage['titre_image'];?>.jpg">
+                        <img src="img/article/<?php echo $rowimage['titre_image'];?>.jpg" alt="Mountains" width="590" height="340">
                     </a>
                 </div>
 
-                <?php } ?> 
+                <?php } ?>
 
                <!--  <div class="gallerybig">
                     <a target="_blank" href="../img/screen01.jpg">
