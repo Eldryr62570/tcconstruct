@@ -18,10 +18,33 @@ require_once "connectdb.php";
             $insert = $dbh->prepare('INSERT INTO password_recover(token_user, token) VALUES(?,?)');
             $insert->execute(array($token_user, $token));
 
-            $link= 'traitement_lien.php?u='.base64_encode($token_user).'&token='.base64_encode($token);
+            $link= 'https://kylian.simplon-charleville.fr/projets/tcconstruct/chang_mdp.php?u='.base64_encode($token_user).'&token='.base64_encode($token);
 
-            echo "<a href='$link'>Lien";
+            //Destinataires
+           
+            $to = $_POST['mail'];
+           
+            //Objet
+           
+           $subject = 'Rénitialiser le mot de passe';
+           
+           //Message
+           
+           $message ="Pour changer de mot de passe veuillez cliquer <a href='$link'>ici</a>";
+           
+           //Entête
+           
+           $headers = "From: The sender Name <kyliancontactepro@gmail.com>\r\n";
+           $headers .= "Reply-To: <kyliancontactepro@gmail.com>\r\n";
+           $headers .= "Content-type: text/html\r\n";
+           
+           //Envoie le mail
+           mail($to, $subject, $message, $headers);
+
+           //Redirection
+
+           header('Location:../connexion.php?sucess');
         }else{
-            echo "Aucun compte ne correspond à cette adresse mail.";
+            header('Location:../mdp_oublie.php?erreur');
         }
     }

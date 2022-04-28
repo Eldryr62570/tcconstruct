@@ -48,9 +48,9 @@
         <form action="db/traitement_mailer.php" method="post">
             E-mail: <input type="mail" name="mail" />
             <input type="submit" name="envoyer" value="Envoyer" class="boutton-connexion" />
-            <?php if(isset($_GET["sucess"] )){?>
+            <?php if(isset($_GET["erreur"] )){?>
             <div class="text-success text-center">
-            Votre email a été envoyer avec succès. <br/>Merci de vérifier vos spams.
+            Aucun compte ne correspond à cette adresse mail. <br/>Merci d'indiquer une email valide !
             </div>
             <?php }?>
         </form>
