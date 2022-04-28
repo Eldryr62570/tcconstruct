@@ -3,7 +3,7 @@
     {
         private $servername = "localhost";
         private $username   = "root";
-        private $password   = "";
+        private $password   = "1234";
         private $database   = "tcconstruct";
         public  $con;
         
