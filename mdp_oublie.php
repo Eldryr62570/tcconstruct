@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Récupération</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -23,7 +23,6 @@
 
     <link rel="stylesheet" href="slick.css">
 </head>
-
 <body>
 
 <?php require("header.php");?>
@@ -33,7 +32,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Connexion</h3>
+                        <h3>Récupération du mot de passe</h3>
                         <p><a href="index.php">Accueil</a> / Connexion</p>
                     </div>
                 </div>
@@ -43,26 +42,20 @@
 
     <div class="formulaire-connexion mb-5">
         <div class="connexion-bg">
-            <h1>CONNEXION</h1>
+            <h1>Mot de passe oublié</h1>
         </div>
         
-        <form action="db/traitement_connexion.php" method="post">
+        <form action="db/traitement_mailer.php" method="post">
             E-mail: <input type="mail" name="mail" />
-            <br />
-            Mot de passe: <input type="password" name="mdp" />
-            <br />
-            <input type="submit" name="connexion" value="Connexion" class="boutton-connexion" />
-            <?php if(isset($_GET["sucess"] )){?>
+            <input type="submit" name="envoyer" value="Envoyer" class="boutton-connexion" />
+            <?php if(isset($_GET["erreur"] )){?>
             <div class="text-success text-center">
-                Votre mot de passe à bien était changer.
-                <br/>
-                Veuillez vous connectez. 
+            Aucun compte ne correspond à cette adresse mail. <br/>Merci d'indiquer une email valide !
             </div>
             <?php }?>
-        </form><a href="mdp_oublie.php">mot de passe oublié ?</a>
+        </form>
     </div>
-
-      <!-- footer_start  -->
+    <!-- footer_start  -->
         <!-- chose_us_area start -->
         <?php include('newchoose.php'); ?>
         <!-- chose_us_area end -->
