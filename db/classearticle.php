@@ -33,9 +33,9 @@
      
         public function displayData()
         {
-            $query = "SELECT * FROM article 
+            $query = "SELECT * FROM article
             INNER JOIN `categorie` ON article.id_categorie = categorie.id_categorie
-            WHERE article.id_article";
+            ";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $data = array();
@@ -54,7 +54,24 @@
             $query = "SELECT * FROM article 
             INNER JOIN `categorie` ON article.id_categorie = categorie.id_categorie
             INNER JOIN possede ON article.id_article = possede.id_article
-            LEFT JOIN tag ON tag.id_tag = possede.id_tag
+            INNER JOIN tag ON tag.id_tag = possede.id_tag
+      /*       LEFT JOIN `image` ON article.id_article = `image`.id_article */
+            WHERE article.id_article = '$id'";
+            $result = $this->con->query($query);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row;
+            }else{
+            echo "Record not found";
+            }
+        }
+
+        public function displyaRecordByIdArt($id)
+        {
+            $query = "SELECT * FROM article 
+            INNER JOIN `categorie` ON article.id_categorie = categorie.id_categorie
+            INNER JOIN possede ON article.id_article = possede.id_article
+            INNER JOIN tag ON tag.id_tag = possede.id_tag
             LEFT JOIN `image` ON article.id_article = `image`.id_article
             WHERE article.id_article = '$id'";
             $result = $this->con->query($query);
@@ -66,13 +83,14 @@
             }
         }
 
+
          
         public function updateRecord($postData)
         {
             $atitre = $this->con->real_escape_string($_POST['titrearticle']);
             $aimgp = $this->con->real_escape_string($_POST['imgparticle']);
             $acontenu = $this->con->real_escape_string($_POST['contenuarticle']);
-            $id = $this->con->real_escape_string($_POST['id']);
+            $id = $this->con->real_escape_string($_POST['id_article']);
         if (!empty($id) && !empty($postData)) {
             $query = "UPDATE article SET titre_article = '$atitre', imgp_article = '$aimgp', contenu_article = '$acontenu' WHERE id_article = '$id'";
             $sql = $this->con->query($query);

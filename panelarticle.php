@@ -78,7 +78,29 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
     </div>
 
     <div class="container">
-        <?php
+        
+  
+    
+
+  <div class="container-xxl">
+	  <div class="table-responsive">
+	  	<div class="table-wrapper">
+        
+              <div class="table-title">
+                
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h2>Table données <b>Articles</b></h2>
+                  </div>
+                    <div  class="success" name="msgsucces"></div>
+                  <div class="col-sm-6">
+                  <li class="ins"><a class="btn btn-black " href="homeadmin.php"> <i class="fa fa-sign-out"></i> Accueil</a> 
+
+                  <a href="addarticles.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter Article</span></a>
+                  </div>
+                </div>
+              </div>
+              <?php
         if (isset($_GET['msg1']) == "insert") {
         echo "<div class='alert alert-success alert-dismissible'>
                 <button type='button' class='close' data-dismiss='alert'>×</button>
@@ -98,24 +120,6 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
                 </div>";
         }
         ?>
-  
-    
-
-  <div class="container-xxl">
-	  <div class="table-responsive">
-	  	<div class="table-wrapper">
-              <div class="table-title">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <h2>Table données <b>Articles</b></h2>
-                  </div>
-                    <div  class="success" name="msgsucces"></div>
-                  <div class="col-sm-6">
-                  <a href="addarticles.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter Article</span></a>
-                  <li class="ins"><a class="btn btn-black " href="homeadmin.php"> <i class="fa fa-sign-out"></i> Accueil</a> 
-                  </div>
-                </div>
-              </div>
 			      <table class="table table-striped table-hover" id="mytable">
                 <thead>
                   <tr>
@@ -143,14 +147,14 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
                     
                     <td>
                    
-                    <a href="#" class="btn btn-success mr-2 text-white"><i class="material-icons">&#xE147;</i> <span> <?php echo $customer['nom_categorie']; ?></span></a>
+                    <a href="editcategories.php?editId=<?php echo $customer['id_categorie'] ?>" class="btn btn-success mr-2 text-white"><i class="material-icons">&#xE147;</i> <span> <?php echo $customer['nom_categorie']; ?></span></a>
                     </td>
-                    <th>
+                    <td>
                     <div class="col-sm-6">
-                    <a href="#" class="btn btn-primary mr-2 text-white"><i class="fa fa-eye text-white"></i> <span>Voir</span></a>
-                    <a href="#" class="btn btn-success mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Ajouter</span></a>
+                    <a href="readimages.php?readId=<?php echo $customer['id_article'] ?>" class="btn btn-primary mr-2 text-white"><i class="fa fa-eye text-white"></i> <span>Voir</span></a>
+                    <a href="addimages.php" class="btn btn-success mr-2 text-white"><i class="material-icons">&#xE147;</i> <span>Ajouter</span></a>
                     </div>
-                    </th>
+                    </td>
                     <td>
                       <button class="btn btn-primary"><a href="editarticles.php?editId=<?php echo $customer['id_article'] ?>">
                         <i class="fa fa-pencil text-white" aria-hidden="true"></i></a></button>

@@ -1,5 +1,5 @@
 <?php
-  
+session_start();
   include 'db/classearticle.php';
   $customerObj = new Articles();
 
@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="css/nice-select.css">
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/slicknav.css">
+    
 
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
@@ -100,7 +101,7 @@
         ?>
     <div class="row">
         <div class="col-md-5 mx-auto">
-            <div class="card">
+            <div class="formulaire-connexion mb-5">
                 <div class="card-header bg-primary">
                     <h4 class="text-white">Editer Article</h4>
                 </div>
@@ -120,7 +121,7 @@
 
                     </div>
                     <div class="form-group">
-                      <input type="hidden" name="id" value="<?php echo $customer['id_article']; ?>">
+                      <input type="hidden" name="id_article" value="<?php echo $customer['id_article']; ?>">
                       <input type="submit" name="update" class="btn btn-primary" style="float:right;" value="Update">
                     </div>
                   </form>
@@ -129,6 +130,9 @@
             </div>
         </div>
     </div>
+
+
+  
 
       <!-- chose_us_area start -->
       <?php include('newchoose.php'); ?>

@@ -1,5 +1,5 @@
 <?php
-  
+session_start(); 
   include 'db/classeusers.php';
   $customerObj = new Users();
 
@@ -102,7 +102,7 @@
         <div class="col-md-5 mx-auto">
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h4 class="text-white">Update data chien</h4>
+                    <h4 class="text-white">Modifier Données Utilisateurs</h4>
                 </div>
                 <div class="card-body bg-light">
                   <form action="editusers.php" method="POST">

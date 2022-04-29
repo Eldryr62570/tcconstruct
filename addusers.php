@@ -1,4 +1,5 @@
 <?php
+session_start();
  
   include 'db/classeusers.php';
   $customerObj = new Users();
@@ -125,8 +126,6 @@
                     <label for="passwordc">Confirmation du mot de passe :</label>
                      <input type="password" name="passwordcuser" class="form-control" id="passwordc" placeholder="Confirmez votre mot de passe" required>
                     </div>
-
-
                     <input type="submit" name="submit" class="btn btn-primary" style="float:right;" value="Envoyer">
                   </form>
                 </div>

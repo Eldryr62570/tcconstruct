@@ -72,7 +72,24 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
     </div>
 
     <div class="container" id="crudfront">
-        <?php
+<div class="container-xl">
+	<div class="table-responsive">
+		<div class="table-wrapper">
+              <div class="table-title">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h2>Table données <b>Utilisateurs</b></h2>
+                  </div>
+                    <div  class="success" name="msgsucces"></div>
+                  <div class="col-sm-6">
+                  <li class="ins"><a class="btn btn-black " href="homeadmin.php"> <i class="fa fa-sign-out"></i> Accueil</a> 
+                  <a href="addusers.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter utilisateur</span></a>
+                
+                  </div>
+                </div>
+              </div>
+
+              <?php
         if (isset($_GET['msg1']) == "insert") {
         echo "<div class='alert alert-success alert-dismissible'>
                 <button type='button' class='close' data-dismiss='alert'>×</button>
@@ -93,22 +110,6 @@ if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
         }
         ?>
 
-
-<div class="container-xl">
-	<div class="table-responsive">
-		<div class="table-wrapper">
-              <div class="table-title">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <h2>Table données <b>Utilisateurs</b></h2>
-                  </div>
-                    <div  class="success" name="msgsucces"></div>
-                  <div class="col-sm-6">
-                  <a href="addusers.php" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Ajouter utilisateur</span></a>
-                  <li class="ins"><a class="btn btn-black " href="homeadmin.php"> <i class="fa fa-sign-out"></i> Accueil</a> 
-                  </div>
-                </div>
-              </div>
 			<table class="table table-striped table-hover" id="mytable">
 			<thead>
       <!-- attribut des tables header du tableaux -->			

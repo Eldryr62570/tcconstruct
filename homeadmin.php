@@ -61,7 +61,7 @@ if ($_SESSION['membres']['role'] == 2) {
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container-xl">
 
              <div class="table-title">
                

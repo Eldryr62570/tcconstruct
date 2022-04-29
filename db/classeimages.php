@@ -19,14 +19,15 @@
        
         public function insertDataImg($post)
         {
-            $filename = $this->con->real_escape_string($_POST['file_name']);
+            $filename = $this->con->real_escape_string($_POST['file']);
             $titreimg = $this->con->real_escape_string($_POST['titre_image']);
-            $query="INSERT INTO `image`(`file_name`, `titre_image`, `uploaded_on`, `id_article`) VALUES (NULL,'$filename','$titreimg',NULL,?)";
+            $artimg = $this->con->real_escape_string($_POST['article_image']);
+            $query="INSERT INTO `image`(`file_name`, `titre_image`, `uploaded_on`, `id_article`) VALUES (NULL,'$filename','$titreimg',NULL,'$artimg')";
             $sql = $this->con->query($query);
             if ($sql==true) {
-                header("Location: panelarticle?msg1=insert");
+                header("Location: panelimages?msg1=insert");
             }else{
-                header("Location: addarticles?msg4=error");
+                header("Location: addimages?msg4=error");
             }
         }
      
@@ -91,7 +92,7 @@
             
         }
 
-        public function deleteRecord($idimage)
+        public function deleteRecordImg($idimage)
         {
             $query = "DELETE FROM `image` WHERE id_image = '$idimage'";
             $sql = $this->con->query($query);

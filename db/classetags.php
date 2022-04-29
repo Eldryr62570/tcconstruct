@@ -17,10 +17,10 @@
             }
         }
        
-        public function insertDataArt($post)
+        public function insertDataTags($post)
         {
             $nomtag = $this->con->real_escape_string($_POST['nomtag']);
-            $query="INSERT INTO `tag`(`nom_tag`) VALUES (NULL,'$nomtag')";
+            $query="INSERT INTO `tag` (`nom_tag`) VALUES ('$nomtag')";
             $sql = $this->con->query($query);
             if ($sql==true) {
                 header("Location: paneltags?msg1=insert");
@@ -48,12 +48,8 @@
 
         public function displyaRecordByIdTags($id)
         {
-            $query = "SELECT * FROM article 
-            LEFT JOIN `categorie` ON article.id_article = categorie.id_categorie
-            INNER JOIN possede ON article.id_article = possede.id_article
-            LEFT JOIN tag ON tag.id_tag = possede.id_tag
-            LEFT JOIN `image` ON article.id_article = `image`.id_article
-            WHERE article.id_article = '$id'";
+            $query = "SELECT * FROM tag
+            WHERE tag.id_tag = '$id'";
             $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -64,12 +60,12 @@
         }
 
          
-        public function updateRecord($postData)
+        public function updateRecordTags($postData)
         {
-            $ntag = $this->con->real_escape_string($_POST['ntag']);
-            $idtag = $this->con->real_escape_string($_POST['id_tag']);
+            $ntag = $this->con->real_escape_string($_POST['nomt']);
+            $id = $this->con->real_escape_string($_POST['id_tag']);
         if (!empty($id) && !empty($postData)) {
-            $query = "UPDATE tag SET nom_tag = '$ntag' WHERE id_tag = '$idtag'";
+            $query = "UPDATE tag SET nom_tag = '$ntag' WHERE id_tag = '$id'";
             $sql = $this->con->query($query);
             if ($sql==true) {
                 header("Location:paneltags.php?msg2=update");
@@ -80,12 +76,12 @@
             
         }
 
-        public function deleteRecord($idtag)
+        public function deleteRecordTags($idtag)
         {
             $query = "DELETE FROM tag WHERE id_tag = '$idtag'";
             $sql = $this->con->query($query);
         if ($sql==true) {
-            header("Location:index.php?msg3=delete");
+            header("Location:paneltags.php?msg3=delete");
         }else{
             echo "Record does not delete try again";
             }

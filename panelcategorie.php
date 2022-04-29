@@ -1,7 +1,17 @@
 <?php
 session_start();
-require_once('db/connectdb.php');
+ 
+include 'db/classecategories.php';
+$customerObj = new Categories();
 
+if(isset($_POST['submit'])) {
+$customerObj->insertDataCat($_POST);
+}
+
+if(isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
+    $deleteId = $_GET['deleteId'];
+    $customerObj->deleteRecordCat($deleteId);
+}
 
 if ($_SESSION['membres']['role'] == 2) {
 ?>
@@ -54,8 +64,8 @@ if ($_SESSION['membres']['role'] == 2) {
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Administration des Tags </h3>
-                        <p><a href="index.php">Admin</a> / Panel - Articles</p>
+                        <h3>Administration des Catégories </h3>
+                        <p><a href="index.php">Admin</a> / Panel - Catégorie</p>
                     </div>
                 </div>
             </div>
@@ -70,61 +80,69 @@ if ($_SESSION['membres']['role'] == 2) {
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Panel <b>Tags</b></h2>
+						<h2>Panel <b>Catégories</b></h2>
 					</div>
                     <div  class="success" name="msgsucces"></div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Ajouter Article</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Supprimer</span></a>						
+                
+                        <form method="POST" action="panelcategorie.php">
+                        <li class="ins"><a class="btn btn-black " href="homeadmin.php"> <i class="fa fa-sign-out"></i> Accueil</a> 					
+                            <label class="text-white">Nom Catégorie</label>
+                            <input type="text" name="titrecat" required>
+                            <input type="submit" class="btn btn-success" value="Ajouter" name="submit">
+                        </form>					
 					</div>
 				</div>
 			</div>
+            <?php
+            if (isset($_GET['msg1']) == "insert") {
+            echo "<div class='alert alert-success alert-dismissible'>
+                    <button type='button' class='close' data-dismiss='alert'>×</button>
+                    Votre Registration est ajoutée
+                    </div>";
+            } 
+            if (isset($_GET['msg2']) == "update") {
+            echo "<div class='alert alert-success alert-dismissible'>
+                    <button type='button' class='close' data-dismiss='alert'>×</button>
+                    Votre registration est modifier ! 
+                    </div>";
+            }
+            if (isset($_GET['msg3']) == "delete") {
+            echo "<div class='alert alert-success alert-dismissible'>
+                    <button type='button' class='close' data-dismiss='alert'>×</button>
+                    Votre demande est suprimée ! 
+                    </div>";
+            }
+            ?>
 			<table class="table table-striped table-hover" id="mytable">
 				<thead>
                     <!-- attribut des tables header du tableaux -->
 					<tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</th>
-                        <th>Action</th>
                         <th>ID Catégorie</th>
                         <th>Nom Catégorie</th>
+                        <th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-                
-                
-                <!-- données des table  -->
-
-                
-                <?php 
-                require "db/affiche_crudarticle.php";
-                if (!$resultatcrudarticles) {
-                echo "Problème de requete";
-                } else {
-                ?>
+                                                
                 <tr>
-                <?php while($ligne = $resultatcrudarticles->fetch()) {
-                                 ?>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-                        <td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>  
+                                <?php $customersCat = $customerObj->displayDataCat(); 
+                                    foreach ($customersCat as $customersc) {
+                                    ?>
                         
-						<td><?php echo $ligne['id_categorie']; ?></td>
-						<td><?php echo $ligne['nom_categorie']; ?></td>
-                        <!-- // fin du while  -->
+                        
+						<td><?php echo $customersc['id_categorie']; ?></td>
+						<td><?php echo $customersc['nom_categorie']; ?></td>
+                        <td>
+                        <button class="btn btn-primary mr-2"><a href="editcategories.php?editId=<?php echo $customersc['id_categorie'] ?>">
+                            <i class="fa fa-pencil text-white" aria-hidden="true"></i></a></button>
+                        <button class="btn btn-danger"><a href="panelcategorie.php?deleteId=<?php echo $customersc['id_categorie'] ?>" onclick="confirm('Voulez vous vraiment supprimer cette demande')">
+                            <i class="fa fa-trash text-white" aria-hidden="true"></i>
+                        </a></button>
+                        </td>
+    
 					</tr>
-                    <?php } ?>
+                    
               <?php }  ?> <!-- fin du else -->
                
 					
@@ -137,199 +155,7 @@ if ($_SESSION['membres']['role'] == 2) {
 </div>
 <!-- Edit Modal HTML -->
 
-<div id="addEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form method="POST" action="db/ajoutarticle.php">
-				<div class="modal-header">						
-					<h4 class="modal-title">Ajouter un article</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-                <div class="erreur" name="msgnotif"></div>
-                    
-				<div class="modal-body">					
-                        <div class="form-group">
-                            <label>Titre Article</label>
-                            <input type="text" class="form-control" name="titrearticle" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Image Article</label><br>
-                            <input name="imagearticle" type="file" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Contenu Article</label>
-                            <input type="text" class="form-control" name="contenuarticle" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Date de l'article</label>
-                            <input type="date" class="form-control" name="datearticle" required>
-                        </div>
 
-                      
-                        <!-- table categorie à joindre en select -->
-                        <div class="form-group">
-                            <label> Choisir catégorie</label>
-                            <?php 
-                            require "db/affiche_crudarticle.php";
-                            ?>
-                
-                
-                                <select name="pets" id="pet-select">
-                                
-                                    <option value="">Catégorie  </option>
-                                    <?php while($ligne = $resultatcrudarticles->fetch()) {
-                                    ?>
-                                    <option value="categorie"><?php echo $ligne['nom_categorie']; ?></option>
-                                    <?php } ?>
-                                </select>
-                                 
-
-                        </div>	
-                       
-                        
-                        <!-- table tags à joindre en select -->
-                        <div class="form-group">
-                        <label> Choisir Tags</label>
-                            <?php 
-                            require "db/affiche_crudarticle.php";
-                            ?>
-                
-                
-                                <select name="pets" id="pet-select">
-                                
-                                    <option value="">Tags  </option>
-                                    <?php while($ligne = $resultatcrudarticles->fetch()) {
-                                    ?>
-                                    <option value="categorie"><?php echo $ligne['nom_tag']; ?></option>
-                                    <?php } ?>
-                                </select>
-                        </div>
-
-
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-success" value="Add" name="addarticle">
-                        </div>
-                 </div>
-			</form>
-		</div>
-	</div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Editer Article</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-                <div class="modal-body">	
-                            <div class="form-group">
-                                <label>Titre Article</label>
-                                <input type="text" class="form-control" name="nom_us" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Image Article</label>
-                                <input type="text" class="form-control" name="prenom_us" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Contenu Article</label>
-                                <input type="text" class="form-control" name="mail_us" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Date de l'article</label>
-                                <input type="date" class="form-control" name="mdp_us" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Nom catégorie</label>
-                                <input type="text" class="form-control" name="mdpconf_us" required>
-                            </div>					
-                            <div class="form-group">
-                                    <label>Tags</label>
-                                    <input type="text" class="form-control" name="adresse_us" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Les images</label>
-                                <input type="text" class="form-control" name="photo_us" required>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Add" name="adduser">
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-info" value="Save">
-                            </div>
-                </div>
-			</form>
-		</div>
-	</div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Supprimer Article</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<p>êtes vous sûre de vouloir supprimer ?</p>
-					<p class="text-warning"><small>Cette Action supprimera</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-
-
-<div id="editStatutModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Publier l'article</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<p>Voulez vous vraiment publier l'article ?</p>
-					<p class="text-warning"><small>Cette Action publira votre article</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Validate">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-
-<div id="readEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Voir l'article</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<p>Voulez vous vraiment voir l'article ?</p>
-					<p class="text-warning"><small>Cette Action vous redigera sur la page article</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Validate">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
 
     <!-- contact_us_start  -->
     <?php include('footer.php'); ?>

@@ -60,21 +60,12 @@ if(isset($_GET['readId']) && !empty($_GET['readId'])) {
                         </div>
                         <hr class="light">
                     </div>
-                    <?php 
-                    require_once 'db/connectdb.php';
-                    $sqlimages = "SELECT * FROM article 
-                    LEFT JOIN `image` ON article.id_article = `image`.id_article
-                    WHERE article.id_article=".$_GET['readID']."";
-                    $requeteimages = $dbh ->prepare($sqlimages);
-                    $requeteimages ->execute(); 
-                    $rowimages =$requeteimages->fetchAll();
-                    ?>
-
+                 
                     
                 <div class="presimg"><h4><i class="fa fa-image"></i>Photos</h4></div>
                 
                 <?php 
-                
+                $customerimg = $customerObj->displyaRecordByIdArt($readId);
                 foreach ($customerimg as $customer) { ?>
                 <div class="gallery">
                     <a target="_blank" href="img/article/<?php echo $customer['titre_image'];?>.jpg">

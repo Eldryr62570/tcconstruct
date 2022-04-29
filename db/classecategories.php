@@ -19,13 +19,13 @@
        
         public function insertDataCat($post)
         {
-            $nomcat = $this->con->real_escape_string($_POST['titreart']);
-            $query="INSERT INTO `categorie`(`nom_categorie`) VALUES (NULL,'$nomcat')";
+            $nomcat = $this->con->real_escape_string($_POST['titrecat']);
+            $query="INSERT INTO `categorie`(`nom_categorie`) VALUES ('$nomcat')";
             $sql = $this->con->query($query);
             if ($sql==true) {
-                header("Location: panelarticle?msg1=insert");
+                header("Location: panelcategorie?msg1=insert");
             }else{
-                header("Location: addarticles?msg4=error");
+                header("Location: panelcategorie?msg4=error");
             }
         }
      
@@ -60,12 +60,12 @@
         }
 
          
-        public function updateRecord($postData)
+        public function updateRecordCat($postData)
         {
-            $nomcategorie = $this->con->real_escape_string($_POST['nomcategorie']);
-            $idcat = $this->con->real_escape_string($_POST['id_categorie']);
+            $nomcategorie = $this->con->real_escape_string($_POST['nomc']);
+            $id= $this->con->real_escape_string($_POST['id_categorie']);
         if (!empty($id) && !empty($postData)) {
-            $query = "UPDATE categorie SET nom_categorie = '$nomcategorie' WHERE id_categorie = '$idcat'";
+            $query = "UPDATE categorie SET nom_categorie = '$nomcategorie' WHERE id_categorie = '$id'";
             $sql = $this->con->query($query);
             if ($sql==true) {
                 header("Location:panelcategorie.php?msg2=update");
@@ -76,12 +76,12 @@
             
         }
 
-        public function deleteRecord($idcat)
+        public function deleteRecordCat($idcat)
         {
             $query = "DELETE FROM categorie WHERE id_categorie = '$idcat'";
             $sql = $this->con->query($query);
         if ($sql==true) {
-            header("Location:index.php?msg3=delete");
+            header("Location:panelcategorie.php?msg3=delete");
         }else{
             echo "Record does not delete try again";
             }
